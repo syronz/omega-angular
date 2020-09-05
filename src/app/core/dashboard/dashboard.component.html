@@ -1,0 +1,47 @@
+<div class="container" [class.main-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="snav.toggle()">
+      <!-- <button mat-icon-button> -->
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="brand-title"><a routerLink="/">OMEGA</a></div>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="profile">
+        <mat-icon>apps</mat-icon>
+      </button>
+      <mat-menu #profile="matMenu" [overlapTrigger]="false">
+        <!-- <button mat-menu-item (click)="logout()"> -->
+        <button mat-menu-item>
+          <mat-icon>power_settings_new</mat-icon>
+          <!-- <span>{{'logout' | dict | titlecase}}</span> -->
+          <span>{{'logout' | titlecase}}</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container 
+    calss="main-sidenav-container" 
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+
+    <mat-sidenav 
+      #snav 
+      [opened]="currentSideStatus" 
+      [mode]="mobileQuery.matches ? 'over' : 'side'" 
+      [fixedInViewport]="mobileQuery.matches" 
+      fixedTopGap="56">
+
+      <!-- <app-navlist></app-navlist> -->
+      <p> one </p>
+      <p> two three </p>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <p>content</p>
+      <!-- <app-loading></app-loading> -->
+      <div class="main">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

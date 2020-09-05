@@ -1,0 +1,31 @@
+.brand-logo {
+  margin-left: 30px;
+  margin-top:4px;
+  font-weight: lighter;
+  img {
+    height: 35px;
+  }
+}
+
+.brand-title {
+  color: azure;
+  margin-left: 20px;
+  margin-top:4px;
+  font-weight: lighter;
+  a {
+    text-decoration: none;
+    color: #fafafa;
+    text-shadow: #2c2c2c 2px 2px;
+  }
+}
+
+.mat-menu-item {
+  width: 200px;
+  mat-icon {
+    color: #333e57;
+  }
+}
+
+mat-sidenav-container {
+  min-height: 90vh;
+}
