@@ -27,8 +27,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'justbase',
-    component: BaseComponent,
+    path: 'login',
+    component: AuthComponent,
   }
 ];
 

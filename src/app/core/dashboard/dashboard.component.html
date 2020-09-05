@@ -32,6 +32,41 @@
       [fixedInViewport]="mobileQuery.matches" 
       fixedTopGap="56">
 
+      <mat-nav-list>
+        <mat-list-item
+            [routerLink]="['/base']"
+            [routerLinkActive]="['itemSelected']">
+          <button mat-icon-button >
+            <mat-icon>dashboard</mat-icon>
+          </button>
+          <a matLine> {{ 'dashboard' | dict | titlecase }}</a>
+        </mat-list-item>
+
+        <mat-list-item
+            [routerLink]="['/login']"
+            [routerLinkActive]="['itemSelected']">
+          <button mat-icon-button >
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+          <a matLine> {{ 'logout' | dict | titlecase }}</a>
+        </mat-list-item>
+      </mat-nav-list>
+
+      <mat-list>
+        <mat-list-item >
+          <mat-icon matListIcon>folder</mat-icon>
+          <h3 matLine> form </h3>
+          <!-- <p matLine> -->
+          <!--   <span> subject </span> -->
+          <!--   <span class="demo-2"> content </span> -->
+          <!-- </p> -->
+        </mat-list-item>
+        <mat-list-item >
+          <mat-icon matListIcon>folder</mat-icon>
+          <h3 matLine> Invoices </h3>
+        </mat-list-item>
+      </mat-list>
+
       <!-- <app-navlist></app-navlist> -->
       <p> one </p>
       <p> two three </p>

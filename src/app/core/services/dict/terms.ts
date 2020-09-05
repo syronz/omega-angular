@@ -1,5 +1,5 @@
 export const Terms = {
-    home: { en: 'home', ku: 'سەرەتا', ar: 'al khana' },
+    home: { en: 'Home', ku: 'سەرەتا', ar: 'al khana' },
     accounts: { en: 'accounts', ku: 'هەژمارەکان', ar: 'accounts' },
     account_name: { en: 'account name', ku: 'ناوی هەژمار', ar: 'account name' },
     account: { en: 'accounts', ku: 'هەژمار', ar: 'accounts' },

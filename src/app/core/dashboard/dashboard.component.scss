@@ -29,3 +29,21 @@
 mat-sidenav-container {
   min-height: 90vh;
 }
+
+// navlist
+mat-nav-list {
+  padding-top: 0;
+}
+
+.itemSelected ,.mat-list-item:focus {
+  // background-color: #8191b2;
+  background-color: rgba(63, 81, 181, .15);
+  // background-color: red;
+  color: #3f51b5;
+}
+
+.itemSelected:hover {
+  // background-color: #9292c9;
+  background-color: rgba(63, 81, 181, .55);
+  color: white;
+}
