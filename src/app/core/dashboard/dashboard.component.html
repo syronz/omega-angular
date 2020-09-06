@@ -1,8 +1,6 @@
 <div class="container" [class.main-is-mobile]="mobileQuery.matches">
-  <mat-toolbar color="primary" style="height: 56px;">
-    <!-- <mat-toolbar-row> -->
+  <mat-toolbar class="mat-elevation-z6" color="primary" style="height: 56px;">
       <button mat-icon-button (click)="snav.toggle()">
-      <!-- <button mat-icon-button> -->
         <mat-icon>menu</mat-icon>
       </button>
       <div class="brand-title"><a routerLink="/">Angular</a></div>
@@ -14,23 +12,18 @@
         <!-- <button mat-menu-item (click)="logout()"> -->
         <button mat-menu-item>
           <mat-icon>power_settings_new</mat-icon>
-          <!-- <span>{{'logout' | dict | titlecase}}</span> -->
-          <span>{{'logout' | titlecase}}</span>
+          <span>{{'logout' | dict | titlecase}}</span>
         </button>
       </mat-menu>
-    <!-- </mat-toolbar-row> -->
   </mat-toolbar>
 
   <mat-sidenav-container 
     calss="main-sidenav-container" >
-    <!-- [style.marginTop.px]="mobileQuery.matches ? 56 : 0"> -->
-
     <mat-sidenav 
       #snav 
       [opened]="currentSideStatus" 
       [mode]="mobileQuery.matches ? 'over' : 'side'" 
-      [fixedInViewport]="mobileQuery.matches" 
-      fixedTopGap="56">
+      [fixedInViewport]="mobileQuery.matches">
 
       <mat-nav-list>
         <mat-list-item

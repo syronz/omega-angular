@@ -7,6 +7,7 @@ import { BaseService } from '../base.service';
   styleUrls: ['./role.component.scss']
 })
 export class RoleComponent implements OnInit {
+  roles: any;
 
   constructor(
     private baseServ: BaseService,
@@ -16,6 +17,7 @@ export class RoleComponent implements OnInit {
     this.baseServ.getRoles().subscribe(
       res => {
         console.log(res);
+        this.roles = res.data;
       },
       err => {
         console.warn(err);
