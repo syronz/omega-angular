@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BaseComponent } from './base.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from '../../core/dashboard/dashboard.component';
+import { RoleComponent } from './role/role.component';
 
 const routes: Routes = [
   {
@@ -19,8 +20,8 @@ const routes: Routes = [
         component: DashboardComponent,
         children: [
           {
-            path: 'auth',
-            component: AuthComponent,
+            path: 'roles',
+            component: RoleComponent,
           },
         ]
       }

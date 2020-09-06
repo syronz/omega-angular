@@ -1,6 +1,6 @@
 <div class="container" [class.main-is-mobile]="mobileQuery.matches">
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
+  <mat-toolbar color="primary" style="height: 56px;">
+    <!-- <mat-toolbar-row> -->
       <button mat-icon-button (click)="snav.toggle()">
       <!-- <button mat-icon-button> -->
         <mat-icon>menu</mat-icon>
@@ -18,12 +18,12 @@
           <span>{{'logout' | titlecase}}</span>
         </button>
       </mat-menu>
-    </mat-toolbar-row>
+    <!-- </mat-toolbar-row> -->
   </mat-toolbar>
 
   <mat-sidenav-container 
-    calss="main-sidenav-container" 
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    calss="main-sidenav-container" >
+    <!-- [style.marginTop.px]="mobileQuery.matches ? 56 : 0"> -->
 
     <mat-sidenav 
       #snav 
@@ -40,6 +40,15 @@
             <mat-icon>dashboard</mat-icon>
           </button>
           <a matLine> {{ 'dashboard' | dict | titlecase }}</a>
+        </mat-list-item>
+
+        <mat-list-item
+            [routerLink]="['/base/roles']"
+            [routerLinkActive]="['itemSelected']">
+          <button mat-icon-button >
+            <mat-icon>book_online</mat-icon>
+          </button>
+          <a matLine> {{ 'role' | dict | titlecase }}</a>
         </mat-list-item>
 
         <mat-list-item

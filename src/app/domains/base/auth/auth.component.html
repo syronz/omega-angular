@@ -5,22 +5,46 @@
       <mat-form-field>
         <input 
           matInput
-          placeholder="{{ 'username' | dict }}"
+          placeholder="{{ 'username' | dict | titlecase }}"
           formControlName="username"
+          autocomplete="username"
           required
           type="text">
         <mat-icon matSuffix>person_pin</mat-icon>
+        <mat-error>
+          {{ errorList.username }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input 
           matInput
-          placeholder="{{ 'password' | dict }}"
+          placeholder="{{ 'password' | dict | titlecase }}"
           formControlName="password"
+          autocomplete="password"
           required
           type="password">
         <mat-icon matSuffix>lock</mat-icon>
+        <mat-error>
+          {{ errorList.password }}
+        </mat-error>
       </mat-form-field>
+
+      <mat-expansion-panel 
+        *ngIf="formError"
+        hideToggle>
+        <mat-expansion-panel-header>
+          <mat-error>
+            {{ formError.message | titlecase }}
+          </mat-error>
+        </mat-expansion-panel-header>
+        <p>{{ 'code' | dict | titlecase}}: #{{ formError.code }}</p>
+        <p>
+          <a href="{{ formError.type }}" target="_blank">
+            {{ formError.title | titlecase }}
+          </a>
+        </p>
+      </mat-expansion-panel>
 
       <button mat-button>{{ 'sign_in' | dict | titlecase }}</button>
     </form>

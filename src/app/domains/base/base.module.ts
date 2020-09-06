@@ -5,11 +5,12 @@ import { CoreModule } from '../../core/core.module';
 import { BaseRoutingModule } from './base-routing.module';
 import { BaseComponent } from './base.component';
 import { AuthComponent } from './auth/auth.component';
+import { RoleComponent } from './role/role.component';
 
 
 
 @NgModule({
-  declarations: [BaseComponent, AuthComponent],
+  declarations: [BaseComponent, AuthComponent, RoleComponent],
   imports: [
     CommonModule,
     CoreModule,
