@@ -131,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "omega-angular"
+  "defaultProject": "omega-angular",
+  "cli": {
+    "analytics": false
+  }
 }

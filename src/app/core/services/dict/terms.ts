@@ -69,5 +69,7 @@ export const Terms = {
     balance_sheet: { en: 'balance sheet', ku: 'بەلانس شیت', ar: 'balance sheet' },
 
 
+    login: { en: 'login', ku: 'daxl boon', ar: 'login' },
+    sign_in: { en: 'sign in', ku: 'daxl ba', ar: 'sign in' },
 };
 

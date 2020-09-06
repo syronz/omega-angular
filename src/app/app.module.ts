@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { DashboardComponent } from './core/dashboard/dashboard.component';
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    HttpClientModule,
     CoreModule,
   ],
   providers: [],

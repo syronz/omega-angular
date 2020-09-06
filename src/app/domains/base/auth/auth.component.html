@@ -1,7 +1,28 @@
 <div class="container">
   <mat-card>
-    <p>auth works!</p>
-    <button mat-button>Basic</button>
-    <p> {{ 'home' | dict }}  !!!</p>
+    <form [formGroup]="authForm" (ngSubmit)="login()">
+      <mat-card-title>{{ 'login' | dict | titlecase }}</mat-card-title>
+      <mat-form-field>
+        <input 
+          matInput
+          placeholder="{{ 'username' | dict }}"
+          formControlName="username"
+          required
+          type="text">
+        <mat-icon matSuffix>person_pin</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input 
+          matInput
+          placeholder="{{ 'password' | dict }}"
+          formControlName="password"
+          required
+          type="password">
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+
+      <button mat-button>{{ 'sign_in' | dict | titlecase }}</button>
+    </form>
   </mat-card>
 </div>

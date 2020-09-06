@@ -5,4 +5,18 @@
   display: grid;
   justify-content: center;
   align-content: center;
+
+  mat-card {
+    width: 210px;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
 }
+
+
