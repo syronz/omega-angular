@@ -1,0 +1,29 @@
+<p>custom-table works!</p>
+
+
+<div class="container">
+
+  <p> ok </p>
+
+  <table border="1" cellspacing="0">
+    <colgroup>
+      <col *ngFor="let c of cols" [maxWidth]="c.width">
+    </colgroup>
+    <tr>
+      <th *ngFor="let k of cols">
+        {{ k.title }}
+      </th>
+    </tr>
+    <tr *ngFor="let r of rows">
+      <td *ngFor="let c of cols" [style]="'max-width:'+c.width">
+        {{ r[c.property] }}
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+<pre>
+  {{ customData | json }}
+  {{ rows | json }}
+</pre>

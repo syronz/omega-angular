@@ -20,12 +20,16 @@ const routes: Routes = [
         component: DashboardComponent,
         children: [
           {
-            path: 'roles',
+            path: 'roles2',
             component: RoleComponent,
           },
         ]
       }
     ]
+  },
+  {
+    path: 'roles',
+    component: RoleComponent,
   },
   {
     path: 'login',
