@@ -1,5 +1,7 @@
 <p>custom-table works!</p>
 
+<!-- <button mat-button (click)="openDeleteDialog()"> ok </button> -->
+
 
 <div class="container">
 
@@ -16,7 +18,40 @@
     </tr>
     <tr *ngFor="let r of rows">
       <td *ngFor="let c of cols" [style]="'max-width:'+c.width">
-        {{ r[c.property] }}
+        {{ r[c.property] }} {{ c.value }}
+        <span *ngIf="c.type === 'action'">
+
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button 
+              (click)="openDeleteDialog(r,customData)" 
+              *ngIf="c.default.delete" 
+              mat-menu-item>
+              <mat-icon>delete</mat-icon>
+              <span>delete</span>
+            </button>
+            <button
+              mat-menu-item 
+              *ngFor="let b of c.buttons" 
+              (click)="b.fn(r);"> 
+              <mat-icon>delete</mat-icon>
+              <span>{{ b.name }}</span>
+            </button> 
+          </mat-menu>
+
+
+          <!-- <button -->  
+          <!--   mat-icon-button --> 
+          <!--   [matMenuTriggerFor]="menu" --> 
+          <!--   aria-label="Example icon-button with a menu"> -->
+          <!--   <i class="material-icons">more_vert</i> -->
+          <!-- </button> -->
+          <!-- <mat-menu #menu="matMenu"> -->
+
+          <!-- </mat-menu> -->
+        </span>
       </td>
     </tr>
   </table>

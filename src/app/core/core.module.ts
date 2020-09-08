@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './shared/material.module';
 import { DictPipe } from './pipes/dict.pipe';
 import { CustomTableComponent } from './shared/custom-table/custom-table.component';
+import { DeleteDialogComponent } from './shared/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
     DictPipe,
     CustomTableComponent,
+    DeleteDialogComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
@@ -17,6 +19,7 @@ import { CustomTableComponent } from './shared/custom-table/custom-table.compone
   ],
   imports: [
     CommonModule,
+    MaterialModule,
   ],
   exports: [
     MaterialModule,

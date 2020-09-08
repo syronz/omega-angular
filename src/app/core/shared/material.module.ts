@@ -51,6 +51,7 @@ const modules = [
   exports: [
     ...modules
   ],
+  declarations: [],
 })
 
 export class MaterialModule {}

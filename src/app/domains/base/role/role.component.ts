@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../base.service';
 import { DictService } from '../../../core/services/dict/dict.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../../../core/shared/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-role',
@@ -14,6 +16,7 @@ export class RoleComponent implements OnInit {
   constructor(
     private baseServ: BaseService,
     private dictServ: DictService,
+    public matDialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +26,7 @@ export class RoleComponent implements OnInit {
       pagination: true,
       pageSize: 10,
       defaultSorting: 'bas_roles.id ASC',
+      url: 'roles',
       actions: {
         list: 'roles',
         create: true,
@@ -57,6 +61,34 @@ export class RoleComponent implements OnInit {
           title: this.dictServ.translate('description'),
           width: '220px',
         },
+        action: {
+          title: this.dictServ.translate('action'),
+          width: '100px',
+          type: 'action',
+          // value: 'hello',
+          default: {
+            delete: true,
+            update: true,
+          },
+          buttons: [
+            {
+              name: 'delete',
+              icon: 'delete',
+              fn: (x) => {
+                console.log(">>>>>>>>>", x);
+                const dialogRef = this.matDialog.open(DeleteDialogComponent, {
+                  width: '300px',
+                  data: {
+                    name: 'diako',
+                  },
+                });
+                dialogRef.afterClosed().subscribe(result => {
+                  console.log(result);
+                });
+              }
+            },
+          ]
+        }
       }
     };
 

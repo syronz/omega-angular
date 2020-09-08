@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CustomTableService } from './custom-table.service';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-custom-table',
@@ -15,6 +17,7 @@ export class CustomTableComponent implements OnInit {
 
   constructor(
     private customTableServ: CustomTableService,
+    public matDialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +40,21 @@ export class CustomTableComponent implements OnInit {
     );
 
 
+  }
+
+  openDeleteDialog(row: any, customData: any): void {
+    console.log("......", row);
+    const dialogRef = this.matDialog.open(DeleteDialogComponent, {
+      width: '300px',
+      data: {
+        row,
+        url: customData.url,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 
   objectKeys(obj): string[] {

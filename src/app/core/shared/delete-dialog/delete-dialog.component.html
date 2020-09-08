@@ -1,0 +1,6 @@
+<p [innerHTML]="'Are_you_sure_you_want_to_permanently_delete_this_item' | dict:'block'"></p>
+<div class="action">
+  <button mat-button (click)="close()" >{{ 'close' | dict | titlecase }}</button>
+  <div></div>
+  <button mat-button color="warn" (click)="delete()" >{{ 'delete' | dict | titlecase }} </button>
+</div>

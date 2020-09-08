@@ -37,7 +37,7 @@ export const Terms = {
     Arabic: { en: 'Arabic', ku: 'عەرەبی', ar: 'Arabic' },
     Are_you_sure_you_want_to_permanently_delete_this_item : {
       en: 'Are you sure you want to permanently delete this item?',
-      ku: 'ئایا دڵنیای لە سڕینەوە؟ دوای سڕینەوە ناگەڕێتەوە!',
+      ku: 'ئایا دڵنیای لە سڕینەوە؟ دوای سڕینەوە ناگەڕێتەوە؟',
       ar: 'Are you sure you want to permanently delete this item?'
     },
     event: { en: 'event', ku: 'رووداو', ar: 'event' },
