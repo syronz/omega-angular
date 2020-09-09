@@ -22,17 +22,14 @@ export class RoleComponent implements OnInit {
   ngOnInit(): void {
 
     this.customData = {
-      title: this.dictServ.translate('roles'),
+      titleTable: 'roles',
+      titleCreate: 'create_role',
+      titleEdit: 'edit_role',
       pagination: true,
       pageSize: 10,
       defaultSorting: 'bas_roles.id ASC',
       url: 'roles',
-      actions: {
-        list: 'roles',
-        create: true,
-        update: true,
-        delete: false,
-      },
+      create: true,
       fields: {
         id: {
           key: true,
@@ -75,7 +72,6 @@ export class RoleComponent implements OnInit {
               name: 'delete',
               icon: 'delete',
               fn: (x) => {
-                console.log(">>>>>>>>>", x);
                 const dialogRef = this.matDialog.open(DeleteDialogComponent, {
                   width: '300px',
                   data: {

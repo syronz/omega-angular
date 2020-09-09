@@ -72,6 +72,7 @@ export const Terms = {
     login: { en: 'login', ku: 'daxl boon', ar: 'login' },
     sign_in: { en: 'sign in', ku: 'daxl ba', ar: 'sign in' },
     code: { en: 'code', ku: 'code', ar: 'code' },
+    create_role: { en: 'create role', ku: 'drwst krdni role', ar: 'create role' },
 
 };
 

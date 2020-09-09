@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CustomTableService } from './custom-table.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { CustomDialogComponent } from '../custom-dialog/custom-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorTheme } from '../../../core/types/error';
 
@@ -12,8 +13,6 @@ import { ErrorTheme } from '../../../core/types/error';
 export class CustomTableComponent implements OnInit {
   @Input() customData: any;
   rows: any;
-  tableCols: string[];
-  headerTitles: string[];
   cols: any[] = [];
   formError: ErrorTheme;
 
@@ -25,15 +24,11 @@ export class CustomTableComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.customData);
 
-    this.customTableServ.getList(this.customData.actions.list).subscribe(
+    this.customTableServ.getList(this.customData.url).subscribe(
       res => {
         console.log(res);
         this.rows = res.data.list;
-        // const keys = this.objectKeys(this.customData.fields)
-
-        // console.log(">>>>", keys);
-        //
-        [this.tableCols, this.headerTitles] = this.generateHeader(this.customData.fields);
+        this.generateHeader(this.customData.fields);
       },
       err => {
         console.warn(err);
@@ -57,25 +52,33 @@ export class CustomTableComponent implements OnInit {
     });
   }
 
+  openAddDialog() {
+    console.log(this.customData);
+    const dialogRef = this.matDialog.open(CustomDialogComponent, {
+      width: '300px',
+      data: {
+        customData: this.customData,
+        title: this.customData.titleCreate,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
+
   objectKeys(obj): string[] {
     return Object.keys(obj);
   }
 
-  generateHeader(obj): [string[], string[]] {
-    const tableCols: string[] = [];
-    const headerTitles: string[] = [];
-
+  generateHeader(obj): void {
     const keys = Object.keys(obj);
     for (const el of keys) {
       if (obj[el].view !== false) {
-        headerTitles.push(obj[el].title);
-        tableCols.push(el);
         obj[el].property = el;
         this.cols.push(obj[el]);
       }
     }
-
-    return [tableCols, headerTitles];
   }
 
 }

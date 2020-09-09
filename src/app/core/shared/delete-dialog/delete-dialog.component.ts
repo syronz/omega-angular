@@ -26,8 +26,6 @@ export class DeleteDialogComponent implements OnInit {
   }
 
   delete(): void {
-    console.log("......>>>>", this.data);
-
     this.sharedServ.delete(`${this.data.url}/${this.data.row.id}`).subscribe(
       res => {
         console.log(res);
