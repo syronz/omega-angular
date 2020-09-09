@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CustomTableService } from './custom-table.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ErrorTheme } from '../../../core/types/error';
 
 @Component({
   selector: 'app-custom-table',
@@ -14,6 +15,7 @@ export class CustomTableComponent implements OnInit {
   tableCols: string[];
   headerTitles: string[];
   cols: any[] = [];
+  formError: ErrorTheme;
 
   constructor(
     private customTableServ: CustomTableService,
@@ -32,7 +34,6 @@ export class CustomTableComponent implements OnInit {
         // console.log(">>>>", keys);
         //
         [this.tableCols, this.headerTitles] = this.generateHeader(this.customData.fields);
-        console.log("***", this.tableCols)
       },
       err => {
         console.warn(err);
@@ -43,7 +44,6 @@ export class CustomTableComponent implements OnInit {
   }
 
   openDeleteDialog(row: any, customData: any): void {
-    console.log("......", row);
     const dialogRef = this.matDialog.open(DeleteDialogComponent, {
       width: '300px',
       data: {

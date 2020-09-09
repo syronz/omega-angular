@@ -20,7 +20,6 @@ export class AuthComponent implements OnInit {
     username: '',
     password: '',
   };
-
   formError: ErrorTheme;
 
   constructor(

@@ -1,4 +1,21 @@
 <p [innerHTML]="'Are_you_sure_you_want_to_permanently_delete_this_item' | dict:'block'"></p>
+
+<mat-expansion-panel 
+  *ngIf="formError"
+  hideToggle>
+  <mat-expansion-panel-header>
+    <mat-error>
+      {{ formError.title | titlecase }}
+    </mat-error>
+  </mat-expansion-panel-header>
+  <p>{{ 'code' | dict | titlecase}}: #{{ formError.code }}</p>
+  <p>
+    <a href="{{ formError.type }}" target="_blank">
+      {{ formError.message | titlecase }}
+    </a>
+  </p>
+</mat-expansion-panel>
+
 <div class="action">
   <button mat-button (click)="close()" >{{ 'close' | dict | titlecase }}</button>
   <div></div>

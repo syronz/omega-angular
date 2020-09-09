@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SharedService } from '../shared.service';
+import { ErrorTheme } from '../../../core/types/error';
 
 @Component({
   selector: 'app-delete-dialog',
@@ -8,6 +9,7 @@ import { SharedService } from '../shared.service';
   styleUrls: ['./delete-dialog.component.scss']
 })
 export class DeleteDialogComponent implements OnInit {
+  formError: ErrorTheme;
 
   constructor(
     public dialogRef: MatDialogRef<DeleteDialogComponent>,
@@ -32,6 +34,7 @@ export class DeleteDialogComponent implements OnInit {
       },
       err => {
         console.warn(err);
+        this.formError = err.error.error;
       }
     );
   }
