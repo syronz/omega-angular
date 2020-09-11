@@ -4,6 +4,7 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 import { CustomDialogComponent } from '../custom-dialog/custom-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorTheme } from '../../../core/types/error';
+import { FieldIterator } from '../../utils/field-iterator';
 
 @Component({
   selector: 'app-custom-table',
@@ -14,7 +15,6 @@ export class CustomTableComponent implements OnInit {
   @Input() customData: any;
   rows: any;
   cols: any[] = [];
-  formError: ErrorTheme;
 
   constructor(
     private customTableServ: CustomTableService,
@@ -28,7 +28,7 @@ export class CustomTableComponent implements OnInit {
       res => {
         console.log(res);
         this.rows = res.data.list;
-        this.generateHeader(this.customData.fields);
+        this.cols = FieldIterator(this.customData.fields, 'table');
       },
       err => {
         console.warn(err);
@@ -55,10 +55,11 @@ export class CustomTableComponent implements OnInit {
   openAddDialog() {
     console.log(this.customData);
     const dialogRef = this.matDialog.open(CustomDialogComponent, {
-      width: '300px',
+      width: this.customData.width,
       data: {
         customData: this.customData,
         title: this.customData.titleCreate,
+        target: 'create',
       },
     });
 
@@ -71,14 +72,16 @@ export class CustomTableComponent implements OnInit {
     return Object.keys(obj);
   }
 
-  generateHeader(obj): void {
-    const keys = Object.keys(obj);
-    for (const el of keys) {
-      if (obj[el].view !== false) {
-        obj[el].property = el;
-        this.cols.push(obj[el]);
-      }
-    }
-  }
+  // generateHeader(obj): any[] {
+  //   const cols: any[] = [];
+  //   const keys = Object.keys(obj);
+  //   for (const el of keys) {
+  //     if (obj[el].view !== false) {
+  //       obj[el].property = el;
+  //       cols.push(obj[el]);
+  //     }
+  //   }
+  //   return cols;
+  // }
 
 }

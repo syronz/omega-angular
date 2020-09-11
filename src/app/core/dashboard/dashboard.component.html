@@ -29,27 +29,33 @@
         <mat-list-item
             [routerLink]="['/base']"
             [routerLinkActive]="['itemSelected']">
-          <button mat-icon-button >
-            <mat-icon>dashboard</mat-icon>
-          </button>
-          <a matLine> {{ 'dashboard' | dict | titlecase }}</a>
+          <!-- <button mat-icon-button > -->
+          <!--   <mat-icon>dashboard</mat-icon> -->
+          <!-- </button> -->
+          <a matLine>
+            <span>+</span>
+            {{ 'dashboard' | dict | titlecase }}
+          </a>
         </mat-list-item>
 
         <mat-list-item
             [routerLink]="['/base/roles']"
             [routerLinkActive]="['itemSelected']">
-          <button mat-icon-button >
-            <mat-icon>book_online</mat-icon>
-          </button>
-          <a matLine> {{ 'role' | dict | titlecase }}</a>
+          <!-- <button mat-icon-button > -->
+          <!--   <mat-icon>book_online</mat-icon> -->
+          <!-- </button> -->
+          <a matLine> 
+            <span> </span>
+            {{ 'role' | dict | titlecase }}
+          </a>
         </mat-list-item>
 
         <mat-list-item
             [routerLink]="['/login']"
             [routerLinkActive]="['itemSelected']">
-          <button mat-icon-button >
-            <mat-icon>exit_to_app</mat-icon>
-          </button>
+          <!-- <button mat-icon-button > -->
+          <!--   <mat-icon>exit_to_app</mat-icon> -->
+          <!-- </button> -->
           <a matLine> {{ 'logout' | dict | titlecase }}</a>
         </mat-list-item>
       </mat-nav-list>

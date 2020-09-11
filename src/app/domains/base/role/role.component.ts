@@ -22,6 +22,7 @@ export class RoleComponent implements OnInit {
   ngOnInit(): void {
 
     this.customData = {
+      width: '320px',
       titleTable: 'roles',
       titleCreate: 'create_role',
       titleEdit: 'edit_role',
@@ -41,18 +42,19 @@ export class RoleComponent implements OnInit {
         },
         created_at: {
           title: this.dictServ.translate('created_at'),
-          view: false,
+          table: false,
           create: false,
           edit: false,
         },
         name: {
           title: this.dictServ.translate('name'),
           width: '115px',
+          required: true,
         },
         resources: {
           title: this.dictServ.translate('resources'),
           width: '350px',
-          view: true,
+          table: true,
         },
         description: {
           title: this.dictServ.translate('description'),

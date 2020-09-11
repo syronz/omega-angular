@@ -1,1 +1,32 @@
-<p>{{ data.title | dict | titlecase }}</p>
+<div class="container">
+  <div class="header">
+    <p>{{ data.title | dict | titlecase }}</p>
+  </div>
+
+  <form [formGroup]="dialogForm" (ngSubmit)="submit()">
+    <div class="content">
+      <div *ngFor="let row of rows">
+        <container-element [ngSwitch]="row.type">
+          <some-element *ngSwitchCase="'text'">
+            <mat-form-field>
+              <input 
+                type="text"
+                [required]="row.required"
+                matInput
+                [placeholder]="row.title"
+                [formControlName]="row.property">
+            </mat-form-field>
+          </some-element>
+          <some-element *ngSwitchCase="'number'">
+            number: {{ row | json }}
+          </some-element>
+          <some-element *ngSwitchCase="'action'">
+          </some-element>
+          <some-element *ngSwitchDefault>
+            undefined: {{ row | json }}
+          </some-element>
+        </container-element>
+      </div>
+    </div>
+  </form>
+</div>

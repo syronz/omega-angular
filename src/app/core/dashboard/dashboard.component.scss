@@ -40,9 +40,16 @@ mat-sidenav-container {
 // navlist
 mat-nav-list {
   padding-top: 0;
+  width: 200px;
+
+  a {
+    span {
+      margin: 0 5px;
+    }
+  }
 }
 
-.itemSelected ,.mat-list-item:focus {
+.itemSelected, .mat-list-item:focus {
   // background-color: #8191b2;
   background-color: rgba(63, 81, 181, .15);
   // background-color: red;
@@ -51,6 +58,6 @@ mat-nav-list {
 
 .itemSelected:hover {
   // background-color: #9292c9;
-  background-color: rgba(63, 81, 181, .55);
-  // color: white;
+  background-color: rgba(63, 81, 181, .85);
+  color: white;
 }
