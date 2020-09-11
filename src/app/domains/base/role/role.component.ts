@@ -27,8 +27,9 @@ export class RoleComponent implements OnInit {
       titleCreate: 'create_role',
       titleEdit: 'edit_role',
       pagination: true,
-      pageSize: 10,
-      defaultSorting: 'bas_roles.id ASC',
+      defaultPageSize: 5,
+      defaultOrderBy: 'bas_roles.id',
+      defaultDirection: 'ASC',
       url: 'roles',
       create: true,
       fields: {
@@ -50,11 +51,13 @@ export class RoleComponent implements OnInit {
           title: this.dictServ.translate('name'),
           width: '115px',
           required: true,
+          value: 'kamilok',
         },
         resources: {
           title: this.dictServ.translate('resources'),
           width: '350px',
           table: true,
+          value: 'rtf5',
         },
         description: {
           title: this.dictServ.translate('description'),

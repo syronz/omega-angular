@@ -10,5 +10,11 @@
       width: 100%;
     }
   }
+
+  .action {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    margin-top: 15px;
+  }
 }
 

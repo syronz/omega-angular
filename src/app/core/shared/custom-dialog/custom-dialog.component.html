@@ -11,10 +11,13 @@
             <mat-form-field>
               <input 
                 type="text"
-                [required]="row.required"
                 matInput
+                [required]="row.required"
                 [placeholder]="row.title"
                 [formControlName]="row.property">
+              <mat-error>
+                {{ errorList[row.property] }}
+              </mat-error>
             </mat-form-field>
           </some-element>
           <some-element *ngSwitchCase="'number'">
@@ -27,6 +30,28 @@
           </some-element>
         </container-element>
       </div>
+    </div>
+
+    <mat-expansion-panel 
+      *ngIf="formError"
+      hideToggle>
+      <mat-expansion-panel-header>
+        <mat-error>
+          {{ formError.title | titlecase }}
+        </mat-error>
+      </mat-expansion-panel-header>
+      <p>{{ 'code' | dict | titlecase}}: #{{ formError.code }}</p>
+      <p>
+        <a href="{{ formError.type }}" target="_blank">
+          {{ formError.message | titlecase }}
+        </a>
+      </p>
+    </mat-expansion-panel>
+
+    <div class="action">
+      <button mat-button (click)="close()" >{{ 'close' | dict | titlecase }}</button>
+      <div></div>
+      <button mat-button color="primary">{{ 'submit' | dict | titlecase }} </button>
     </div>
   </form>
 </div>

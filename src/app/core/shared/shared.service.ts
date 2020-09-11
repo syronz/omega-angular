@@ -16,4 +16,9 @@ export class SharedService {
     return this.http.delete<any>(env.apiURL + url);
   }
 
+  create(url: string, data: any): Observable<any> {
+    return this.http.post<any>(env.apiURL + url, data);
+  }
+
+
 }

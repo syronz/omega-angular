@@ -1,5 +1,3 @@
-<p>custom-table works!</p>
-
 <!-- <button mat-button (click)="openDeleteDialog()"> ok </button> -->
 <button mat-button (click)="openAddDialog()">{{ 'add' | dict | titlecase }}</button>
 
@@ -56,6 +54,13 @@
       </td>
     </tr>
   </table>
+  <mat-paginator #paginator
+    showFirstLastButtons
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="pageEvent = changePage($event)">
+  </mat-paginator>
 
 </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { SharedService } from '../shared.service';
 import { ErrorTheme } from '../../../core/types/error';
 import { FieldIterator } from '../../utils/field-iterator';
@@ -16,6 +16,7 @@ export class CustomDialogComponent implements OnInit {
   dialogForm: FormGroup;
   rows: any[] = [];
   rawForm: any = {};
+  errorList: any = {};
 
   constructor(
     public dialogRef: MatDialogRef<CustomDialogComponent>,
@@ -32,22 +33,23 @@ export class CustomDialogComponent implements OnInit {
     console.log(this.data);
     this.title = this.data.title;
 
-    console.log(this.rawForm)
+    console.log(this.rawForm);
     this.dialogForm = this.formBuilder.group(this.rawForm);
   }
 
   generateForm(fields: any): any {
     const form = {};
     for (const el of fields) {
+      const preValue = el.required === true ?  [el.value, Validators.required] : [el.value];
       switch (el.type) {
         case 'action':
-          break
+          break;
         case 'text': {
-          form[el.property] = '';
+          form[el.property] = preValue;
           break;
         }
         case 'number': {
-          form[el.property] = '';
+          form[el.property] = preValue;
           break;
         }
         case undefined: {
@@ -59,11 +61,39 @@ export class CustomDialogComponent implements OnInit {
       }
     }
 
-    return form
+    return form;
   }
 
   submit(): void {
-    console.log(this.dialogForm.value);
+    switch (this.data.target) {
+      case 'create': {
+        this.sharedServ.create(`${this.data.customData.url}`, this.dialogForm.value).subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+            console.warn(err);
+            if ('invalid_params' in err.error.error) {
+              for (const el of err.error.error.invalid_params) {
+                this.dialogForm.controls[el.field].setErrors({incorrect: true});
+                this.errorList[el.field] = el.reason;
+              }
+              return;
+            }
+
+            this.formError = err.error.error;
+          }
+        );
+
+        break;
+      }
+      case 'update':
+        break;
+    }
+  }
+
+  close(): void {
+    this.dialogRef.close({result: this.data});
   }
 
 }
