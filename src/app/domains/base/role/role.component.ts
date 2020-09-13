@@ -51,13 +51,13 @@ export class RoleComponent implements OnInit {
           title: this.dictServ.translate('name'),
           width: '115px',
           required: true,
-          value: 'kamilok',
+          // value: 'kamilok',
         },
         resources: {
           title: this.dictServ.translate('resources'),
           width: '350px',
           table: true,
-          value: 'rtf5',
+          // value: 'rtf5',
         },
         description: {
           title: this.dictServ.translate('description'),

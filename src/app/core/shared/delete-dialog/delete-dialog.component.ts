@@ -22,13 +22,14 @@ export class DeleteDialogComponent implements OnInit {
   }
 
   close(): void {
-    this.dialogRef.close({result: this.data});
+    this.dialogRef.close({refresh: false});
   }
 
   delete(): void {
     this.sharedServ.delete(`${this.data.url}/${this.data.row.id}`).subscribe(
       res => {
         console.log(res);
+        this.dialogRef.close({refresh: true});
       },
       err => {
         console.warn(err);

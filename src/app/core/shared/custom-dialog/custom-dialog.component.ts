@@ -30,7 +30,7 @@ export class CustomDialogComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.data);
+    console.log('>>>>>>> INSIDE THE DIALOG', this.data);
     this.title = this.data.title;
 
     console.log(this.rawForm);
@@ -40,7 +40,7 @@ export class CustomDialogComponent implements OnInit {
   generateForm(fields: any): any {
     const form = {};
     for (const el of fields) {
-      const preValue = el.required === true ?  [el.value, Validators.required] : [el.value];
+      const preValue = el.required === true ?  [el.tmpValue, Validators.required] : [el.tmpValue];
       switch (el.type) {
         case 'action':
           break;
@@ -70,6 +70,7 @@ export class CustomDialogComponent implements OnInit {
         this.sharedServ.create(`${this.data.customData.url}`, this.dialogForm.value).subscribe(
           res => {
             console.log(res);
+            this.dialogRef.close({refresh: true});
           },
           err => {
             console.warn(err);

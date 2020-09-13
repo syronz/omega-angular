@@ -31,6 +31,15 @@
               <mat-icon>delete</mat-icon>
               <span>delete</span>
             </button>
+
+            <button 
+              (click)="openEditDialog(r,customData)" 
+              *ngIf="c.default.update" 
+              mat-menu-item>
+              <mat-icon>edit</mat-icon>
+              <span>edit</span>
+            </button>
+
             <button
               mat-menu-item 
               *ngFor="let b of c.buttons" 

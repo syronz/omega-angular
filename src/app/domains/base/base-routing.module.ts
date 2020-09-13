@@ -20,7 +20,7 @@ const routes: Routes = [
         component: DashboardComponent,
         children: [
           {
-            path: 'roles',
+            path: 'roles2',
             component: RoleComponent,
           },
         ]
@@ -28,7 +28,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'roles2',
+    path: 'roles',
     component: RoleComponent,
   },
   {

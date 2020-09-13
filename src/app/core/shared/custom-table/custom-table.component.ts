@@ -33,7 +33,6 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
   ) {
     this.route.queryParams.subscribe(params => {
       // this.queryParams = params;
-      console.log('>>>>>>>>>>>>> 2', params, this.customData);
       this.queryParams.page = params.page;
       if ('page' in params && this.paginator !== undefined) {
         this.paginator.pageIndex = params.page;
@@ -71,13 +70,11 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log('>>>>>>>>>>>>>>>', this.queryParams, this.customData);
     this.queryParams.page_size = this.customData.defaultPageSize;
     this.list(this.queryParams);
   }
 
   ngAfterViewInit(): void {
-    console.log('>>>>>>>>>>>>>>> 6', this.queryParams);
     if ('page' in this.queryParams) {
       this.paginator.pageIndex = this.queryParams.page;
     }
@@ -94,12 +91,24 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if (result !== undefined && result.refresh === true) {
+        this.list(this.queryParams);
+      }
     });
   }
 
   openAddDialog(): void {
-    console.log(this.customData);
+    console.log('>>>>>>####', this.customData);
+
+    const keys = Object.keys(this.customData.fields);
+    for (const el of keys) {
+      if (this.customData.fields[el].put === true) {
+        delete this.customData.fields[el];
+      } else {
+        this.customData.fields[el].tmpValue = '';
+      }
+    }
+
     const dialogRef = this.matDialog.open(CustomDialogComponent, {
       width: this.customData.width,
       data: {
@@ -110,7 +119,41 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if (result !== undefined && result.refresh === true) {
+        this.list(this.queryParams);
+      }
+    });
+  }
+
+  openEditDialog(row: any, customData: any): void {
+
+    const keys = Object.keys(row);
+    for (const el of keys) {
+      if (customData.fields[el] === undefined) {
+        customData.fields[el] = {
+          edit: false,
+          tmpValue: row[el],
+          put: true,
+        };
+      } else {
+        customData.fields[el].tmpValue = row[el];
+      }
+    }
+
+    const dialogRef = this.matDialog.open(CustomDialogComponent, {
+      width: this.customData.width,
+      data: {
+        customData: this.customData,
+        title: this.customData.titleEdit,
+        target: 'edit',
+        row,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined && result.refresh === true) {
+        this.list(this.queryParams);
+      }
     });
   }
 

@@ -13,8 +13,6 @@ export class CustomTableService {
   ) {}
 
   getList(url: string, params: any): Observable<any> {
-    // return this.http.get<any>(env.apiURL + url);
-    console.log(">>>>>>>>>>>>>>>>>>4", params);
     return this.http.get<any>(env.apiURL + url, {params});
   }
 
