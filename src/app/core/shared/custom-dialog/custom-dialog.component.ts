@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms'
 import { SharedService } from '../shared.service';
 import { ErrorTheme } from '../../../core/types/error';
 import { FieldIterator } from '../../utils/field-iterator';
+import { FindPrimaryKey } from '../../utils/find-primary-key';
 
 @Component({
   selector: 'app-custom-dialog',
@@ -17,6 +18,7 @@ export class CustomDialogComponent implements OnInit {
   rows: any[] = [];
   rawForm: any = {};
   errorList: any = {};
+  dialogType: string;
 
   constructor(
     public dialogRef: MatDialogRef<CustomDialogComponent>,
@@ -32,6 +34,7 @@ export class CustomDialogComponent implements OnInit {
   ngOnInit(): void {
     console.log('>>>>>>> INSIDE THE DIALOG', this.data);
     this.title = this.data.title;
+    this.dialogType = this.data.target;
 
     console.log(this.rawForm);
     this.dialogForm = this.formBuilder.group(this.rawForm);
@@ -57,7 +60,7 @@ export class CustomDialogComponent implements OnInit {
           break;
         }
         default:
-          form[el.property] = 'not ok';
+          form[el.property] = preValue;
       }
     }
 
@@ -69,7 +72,6 @@ export class CustomDialogComponent implements OnInit {
       case 'create': {
         this.sharedServ.create(`${this.data.customData.url}`, this.dialogForm.value).subscribe(
           res => {
-            console.log(res);
             this.dialogRef.close({refresh: true});
           },
           err => {
@@ -85,10 +87,27 @@ export class CustomDialogComponent implements OnInit {
             this.formError = err.error.error;
           }
         );
-
         break;
       }
-      case 'update':
+      case 'edit':
+        const primaryKey = FindPrimaryKey(this.data.customData.fields);
+        this.sharedServ.update(`${this.data.customData.url}/${this.dialogForm.value[primaryKey]}`, this.dialogForm.value).subscribe(
+          res => {
+            this.dialogRef.close({refresh: true});
+          },
+          err => {
+            console.warn(err);
+            if ('invalid_params' in err.error.error) {
+              for (const el of err.error.error.invalid_params) {
+                this.dialogForm.controls[el.field].setErrors({incorrect: true});
+                this.errorList[el.field] = el.reason;
+              }
+              return;
+            }
+
+            this.formError = err.error.error;
+          }
+        );
         break;
     }
   }

@@ -20,5 +20,9 @@ export class SharedService {
     return this.http.post<any>(env.apiURL + url, data);
   }
 
+  update(url: string, data: any): Observable<any> {
+    return this.http.put<any>(env.apiURL + url, data);
+  }
+
 
 }

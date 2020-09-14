@@ -8,7 +8,7 @@
       <div *ngFor="let row of rows">
         <container-element [ngSwitch]="row.type">
           <some-element *ngSwitchCase="'text'">
-            <mat-form-field>
+            <mat-form-field *ngIf="row[dialogType] !== false">
               <input 
                 type="text"
                 matInput

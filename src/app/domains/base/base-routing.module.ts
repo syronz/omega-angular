@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from '../../core/guard/auth.guard';
+import { DashboardComponent } from '../../core/dashboard/dashboard.component';
 import { BaseComponent } from './base.component';
 import { AuthComponent } from './auth/auth.component';
-import { DashboardComponent } from '../../core/dashboard/dashboard.component';
 import { RoleComponent } from './role/role.component';
 
 const routes: Routes = [
@@ -18,9 +19,10 @@ const routes: Routes = [
       {
         path: '',
         component: DashboardComponent,
+        canActivateChild: [AuthGuard],
         children: [
           {
-            path: 'roles2',
+            path: 'roles',
             component: RoleComponent,
           },
         ]
@@ -28,7 +30,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'roles',
+    path: 'roles2',
     component: RoleComponent,
   },
   {

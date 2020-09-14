@@ -126,6 +126,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
   }
 
   openEditDialog(row: any, customData: any): void {
+    console.log("$$$$$$$>>>>>>>>>>>", row);
 
     const keys = Object.keys(row);
     for (const el of keys) {
