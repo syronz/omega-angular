@@ -10,19 +10,27 @@ import { RoleComponent } from './role/role.component';
 const routes: Routes = [
   {
     path: '',
-    component: BaseComponent,
+    component: DashboardComponent,
     children: [
       {
-        path: 'login',
+        path: 'dashboard',
+        component: RoleComponent,
+      },
+      {
+        path: 'login2',
         component: AuthComponent,
       },
       {
         path: '',
-        component: DashboardComponent,
+        component: BaseComponent,
         canActivateChild: [AuthGuard],
         children: [
           {
             path: 'roles',
+            component: RoleComponent,
+          },
+          {
+            path: 'users',
             component: RoleComponent,
           },
         ]

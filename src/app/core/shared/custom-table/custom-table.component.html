@@ -1,14 +1,11 @@
 <!-- <button mat-button (click)="openDeleteDialog()"> ok </button> -->
 <button mat-button (click)="openAddDialog()">{{ 'add' | dict | titlecase }}</button>
 
-
 <div class="container">
 
-  <p> ok </p>
-
-  <table border="1" cellspacing="0">
+  <table [ngClass]="{'loading': loadingStat, 'loaded': !loadingStat}">
     <colgroup>
-      <col *ngFor="let c of cols" [maxWidth]="c.width">
+      <col *ngFor="let c of cols" [width]="c.width" [maxWidth]="c.width">
     </colgroup>
     <tr>
       <th *ngFor="let k of cols">
@@ -19,14 +16,27 @@
       <td *ngFor="let c of cols" [style]="'max-width:'+c.width">
         {{ r[c.property] }} {{ c.value }}
         <span *ngIf="c.type === 'action'">
+            <button 
+              mat-icon-button
+              (click)="openDeleteDialog(r,customData)" 
+              *ngIf="c.default.delete === 'icon'" >
+              <mat-icon>delete</mat-icon>
+            </button>
+
+            <button 
+              mat-icon-button
+              (click)="openEditDialog(r,customData)" 
+              *ngIf="c.default.edit === 'icon'" >
+              <mat-icon>edit</mat-icon>
+            </button>
 
           <button mat-icon-button [matMenuTriggerFor]="menu">
-            <i class="material-icons">more_vert</i>
+            <i class="material-icons">arrow_drop_down</i>
           </button>
           <mat-menu #menu="matMenu">
             <button 
               (click)="openDeleteDialog(r,customData)" 
-              *ngIf="c.default.delete" 
+              *ngIf="c.default.delete === 'menu'" 
               mat-menu-item>
               <mat-icon>delete</mat-icon>
               <span>delete</span>
@@ -72,8 +82,3 @@
   </mat-paginator>
 
 </div>
-
-<pre>
-  {{ customData | json }}
-  {{ rows | json }}
-</pre>

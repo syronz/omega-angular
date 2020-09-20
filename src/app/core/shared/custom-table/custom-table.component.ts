@@ -16,14 +16,24 @@ import { FieldIterator } from '../../utils/field-iterator';
 export class CustomTableComponent implements OnInit, AfterViewInit {
   @ViewChild('paginator', {static: true}) paginator;
   @Input() customData: any;
-  rows: any;
-  cols: any[] = [];
+  rows = [
+    { id: 1, },
+    { id: 2, },
+    { id: 3, },
+    { id: 4, },
+    { id: 5, },
+  ];
+
+  cols = [
+    { title: ' ', width: '100px', value: ' ' },
+  ];
 
   length: number;
   pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 50, 100];
   pageEvent: PageEvent;
   queryParams: any = {};
+  loadingStat = true;
 
   constructor(
     private router: Router,
@@ -32,6 +42,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
     public matDialog: MatDialog,
   ) {
     this.route.queryParams.subscribe(params => {
+
       // this.queryParams = params;
       this.queryParams.page = params.page;
       if ('page' in params && this.paginator !== undefined) {
@@ -60,6 +71,7 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
         console.log(res);
         this.rows = res.data.list;
         this.length = res.data.count;
+        this.loadingStat = false;
 
         this.cols = FieldIterator(this.customData.fields, 'table');
       },
@@ -126,7 +138,6 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
   }
 
   openEditDialog(row: any, customData: any): void {
-    console.log("$$$$$$$>>>>>>>>>>>", row);
 
     const keys = Object.keys(row);
     for (const el of keys) {

@@ -7,11 +7,11 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  acl: string;
+  resources: string;
 
   private apiBaseUrl = `/api/cloud/${environment.apiVersion}`;
   constructor(private http: HttpClient) {
-    this.acl = localStorage.getItem('acl');
+    this.resources = localStorage.getItem('resources');
   }
 
   login(loginPayload: any): Observable<any> {
@@ -19,15 +19,16 @@ export class AuthService {
   }
 
   setAcl(v): void {
-    this.acl = v;
+    this.resources = v;
   }
 
   getAcl(): string {
-    return this.acl;
+    return this.resources;
   }
 
   checkPerm(resource: string): boolean {
-    return this.acl.includes(resource);
+    console.log(">>>>>>>>>>", this.resources);
+    return this.resources.includes(resource);
   }
 
   checkPermAll(...resources): boolean {

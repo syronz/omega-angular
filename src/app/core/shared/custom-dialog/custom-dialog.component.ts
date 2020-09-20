@@ -26,7 +26,8 @@ export class CustomDialogComponent implements OnInit {
     private sharedServ: SharedService,
     private formBuilder: FormBuilder,
   ) {
-    this.rows = FieldIterator(this.data.customData.fields, data.target);
+    const target = this.data.target === 'create' ? 'create' : '';
+    this.rows = FieldIterator(this.data.customData.fields, target);
     this.rawForm = this.generateForm(this.rows);
   }
 

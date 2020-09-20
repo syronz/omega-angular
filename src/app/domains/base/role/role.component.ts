@@ -47,6 +47,11 @@ export class RoleComponent implements OnInit {
           create: false,
           edit: false,
         },
+        updated_at: {
+          table: false,
+          create: false,
+          edit: false,
+        },
         name: {
           title: this.dictServ.translate('name'),
           width: '115px',
@@ -65,12 +70,12 @@ export class RoleComponent implements OnInit {
         },
         action: {
           title: this.dictServ.translate('action'),
-          width: '100px',
+          width: '120px',
           type: 'action',
           // value: 'hello',
           default: {
-            delete: true,
-            update: true,
+            delete: 'icon',
+            edit: 'icon',
           },
           buttons: [
             {
@@ -92,6 +97,7 @@ export class RoleComponent implements OnInit {
         }
       }
     };
+
 
   } // ngOnInit
 

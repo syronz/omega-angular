@@ -1,13 +1,39 @@
 .container {
   // width: 100%;
-  background: #EEEEEE;
-
+  // background: #EEEEEE;
+  
   table {
-    // width: 100%;
+    width: calc(100% - 2px);
+    border-spacing: 0;
+    border-collapse: collapse;
+    th {
+      height: 34px; // should be reconsidered
+    }
+
+    td {
+      height: 44px;
+    }
+  }
+
+  .loading {
+    background-color: #EEE;
+    td, th {
+      border: none;
+      border: 1px solid #EEE;
+    }
+  }
+
+  .loaded {
+
+    th {
+      border: 1px solid black;
+    }
+
     td {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      border: 1px solid black;
     }
   }
 }
