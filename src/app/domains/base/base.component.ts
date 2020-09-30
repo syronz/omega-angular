@@ -46,8 +46,6 @@ export class BaseComponent implements OnInit {
       });
     }
 
-    console.log(".....>>>>>>>>>>>>>>", this.routes);
-
   } // ngOnInit
 
 }

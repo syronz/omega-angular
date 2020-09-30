@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./domains/base/base.module').then(m => m.BaseModule)
   },
   {
+    path: 'cafe',
+    loadChildren: () => import('./domains/cafe/cafe.module').then(m => m.CafeModule)
+  },
+  {
     path: '**',
     redirectTo: 'base'
   },
