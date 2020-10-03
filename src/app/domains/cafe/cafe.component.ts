@@ -14,12 +14,20 @@ export interface Routes {
   styleUrls: ['./cafe.component.scss']
 })
 export class CafeComponent implements OnInit {
+  routes = [];
 
   constructor(
     public authService: AuthService,
-) { }
+  ) { }
 
   ngOnInit(): void {
+    if (this.authService.checkPerm('role:read')) {
+      this.routes.push({
+        path: '/base/roles',
+        name: 'Role',
+        symbol: 'perm_data_setting',
+      });
+    }
   }
 
 }

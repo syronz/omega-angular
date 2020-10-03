@@ -75,5 +75,11 @@ export const Terms = {
     create_role: { en: 'create role', ku: 'drwst krdni role', ar: 'create role' },
     dashboard: { en: 'dashboard', ku: 'dashboard', ar: 'dashboard' },
 
+    // Cafe Domain
+    cafe: { en: 'cafe', ku: 'cafe', ar: 'cafe' },
+    food: { en: 'food', ku: 'food', ar: 'food' },
+    price: { en: 'price', ku: 'price', ar: 'price' },
+    new_order: { en: 'new_order', ku: 'new_order', ar: 'new_order' },
+
 };
 

@@ -21,7 +21,15 @@
             </mat-form-field>
           </some-element>
           <some-element *ngSwitchCase="'number'">
-            number: {{ row | json }}
+              <input 
+                type="number"
+                matInput
+                [required]="row.required"
+                [placeholder]="row.title"
+                [formControlName]="row.property">
+              <mat-error>
+                {{ errorList[row.property] }}
+              </mat-error>
           </some-element>
           <some-element *ngSwitchCase="'action'">
           </some-element>

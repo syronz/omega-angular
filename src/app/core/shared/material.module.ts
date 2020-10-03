@@ -20,6 +20,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatRippleModule } from '@angular/material/core';
+
 
 const modules = [
     MatButtonModule,
@@ -44,6 +46,7 @@ const modules = [
     MatTabsModule,
     MatDialogModule,
     MatExpansionModule,
+    MatRippleModule,
 ];
 
 

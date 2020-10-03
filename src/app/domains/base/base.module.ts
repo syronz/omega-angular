@@ -10,7 +10,11 @@ import { RoleComponent } from './role/role.component';
 
 
 @NgModule({
-  declarations: [BaseComponent, AuthComponent, RoleComponent],
+  declarations: [
+    BaseComponent,
+    AuthComponent,
+    RoleComponent
+  ],
   imports: [
     CommonModule,
     CoreModule,

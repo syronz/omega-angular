@@ -51,6 +51,24 @@
         </mat-list-item>
 
         <mat-list-item
+            [routerLink]="['/cafe/foods']"
+            [routerLinkActive]="['itemSelected']">
+          <a matLine> 
+            <span> </span>
+            {{ 'food' | dict | titlecase }}
+          </a>
+        </mat-list-item>
+
+        <mat-list-item
+            [routerLink]="['/cafe/orders/new']"
+            [routerLinkActive]="['itemSelected']">
+          <a matLine> 
+            <span> </span>
+            {{ 'new_order' | dict | titlecase }}
+          </a>
+        </mat-list-item>
+
+        <mat-list-item
             [routerLink]="['/login']"
             [routerLinkActive]="['itemSelected']">
           <!-- <button mat-icon-button > -->

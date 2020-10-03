@@ -1,0 +1,51 @@
+<div class="container"> 
+  <form [formGroup]="orderForm" (ngSubmit)="submit()">
+    <div class="foods">
+      <mat-form-field>
+        <input 
+          type="text"
+          matInput
+          formControlName="customer" >
+      </mat-form-field>
+        <div formArrayName="foods">
+          <div *ngFor="let f of orderForm.value.foods; let i = index; trackBy: trackByFn">
+            {{ f | json }}
+            {{ i | json }}
+            <ng-container [formGroupName]="i">
+              <div matRipple >
+                <p> {{ f.name }} </p>
+                <p> {{ f.price | number }}</p>
+              </div>
+              <div class="foodFooter">
+                <button (click)="add(3)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <mat-form-field>
+                  <input 
+                    type="string"
+                    matInput
+                    formControlName="qty">
+                </mat-form-field>
+                <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+
+    </div>
+
+    <div class="summary">
+      this is foods panel
+      <button type="submit"> submit </button>
+      <pre>
+
+      {{orderForm.value | json }}
+      </pre>
+
+    </div>
+
+  </form>
+</div>
