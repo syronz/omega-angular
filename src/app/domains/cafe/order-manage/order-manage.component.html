@@ -1,38 +1,67 @@
 <div class="container"> 
   <form [formGroup]="orderForm" (ngSubmit)="submit()">
-    <div class="foods">
-      <mat-form-field>
-        <input 
-          type="text"
-          matInput
-          formControlName="customer" >
-      </mat-form-field>
-        <div formArrayName="foods">
-          <div *ngFor="let f of orderForm.value.foods; let i = index; trackBy: trackByFn">
-            {{ f | json }}
-            {{ i | json }}
-            <ng-container [formGroupName]="i">
-              <div matRipple >
-                <p> {{ f.name }} </p>
-                <p> {{ f.price | number }}</p>
-              </div>
-              <div class="foodFooter">
-                <button (click)="add(3)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
-                  <mat-icon>remove</mat-icon>
-                </button>
-                <mat-form-field>
-                  <input 
-                    type="string"
-                    matInput
-                    formControlName="qty">
-                </mat-form-field>
-                <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
-                  <mat-icon>add</mat-icon>
-                </button>
-              </div>
-            </ng-container>
-          </div>
+    <div class="invoice">
+      <div class="header">
+        <mat-form-field>
+          <input 
+            type="text" 
+            matInput 
+            placeholder="{{'customer' | dict | titlecase }}"
+            formControlName="customer" />
+        </mat-form-field>
+        <mat-form-field>
+          <input 
+            type="text" 
+            matInput 
+            placeholder="{{'table' | dict | titlecase }}"
+            formControlName="table" />
+        </mat-form-field>
+        <mat-form-field>
+          <input 
+            type="text" 
+            matInput 
+            placeholder="{{'phone' | dict | titlecase }}"
+            formControlName="phone" />
+        </mat-form-field>
+        <mat-form-field>
+          <input 
+            type="number" 
+            matInput 
+            placeholder="{{'discount' | dict | titlecase }}"
+            formControlName="discount" />
+        </mat-form-field>
+        <mat-form-field>
+          <input 
+            type="text" 
+            matInput 
+            placeholder="{{'description' | dict | titlecase }}"
+            formControlName="description" />
+        </mat-form-field>
+      </div>
+      <div class="foods"  formArrayName="foods">
+        <div class="foodBtn" *ngFor="let f of orderForm.value.foods; let i = index; trackBy: trackByFn">
+          <ng-container [formGroupName]="i">
+            <div matRipple >
+              <p class="center"> {{ f.name }} </p>
+              <p class="center"> {{ f.price | number }}</p>
+            </div>
+            <div class="foodFooter">
+              <button (click)="add(3)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <mat-form-field>
+                <input 
+                  type="string"
+                  matInput
+                  formControlName="qty">
+              </mat-form-field>
+              <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </ng-container>
         </div>
+      </div>
 
 
     </div>

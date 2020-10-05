@@ -54,7 +54,7 @@ export class FoodComponent implements OnInit {
         },
         name: {
           title: this.dictServ.translate('name'),
-          width: '165px',
+          width: '135px',
           required: true,
         },
         price: {
@@ -63,9 +63,14 @@ export class FoodComponent implements OnInit {
           type: 'number',
           table: true,
         },
+        status: {
+          title: this.dictServ.translate('status'),
+          width: '150px',
+          required: true,
+        },
         description: {
           title: this.dictServ.translate('description'),
-          width: '420px',
+          width: '300px',
         },
         action: {
           title: this.dictServ.translate('action'),

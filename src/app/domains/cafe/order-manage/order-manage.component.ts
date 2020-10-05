@@ -16,13 +16,17 @@ export class OrderManageComponent implements OnInit {
     public formBuilder: FormBuilder,
     private cafeService: CafeService,
   ) {
+    this.orderForm = this.formBuilder.group({
+      customer: '',
+      table: '',
+      phone: '',
+      discount: 0,
+      description: '',
+      foods: this.formBuilder.array([])
+    });
   }
 
   ngOnInit(): void {
-    this.orderForm = this.formBuilder.group({
-      customer: '',
-      foods: this.formBuilder.array([])
-    });
 
     this.cafeService.getActiveFoods().subscribe(
       res => {
@@ -31,24 +35,28 @@ export class OrderManageComponent implements OnInit {
           this.arrFoods.push(this.formBuilder.group({
             name: el.name,
             price: el.price,
-            qty: 8,
+            qty: '',
             food_id: el.id,
           }));
 
           this.orderForm = this.formBuilder.group( {
             customer: '',
+            table: '',
+            phone: '',
+            discount: 0,
+            description: '',
             foods: this.formBuilder.array(
-              // this.arrFoods
-              [
-              this.formBuilder.group({
-                qty: '15',
-                food_id: 1,
-              }),
-              this.formBuilder.group({
-                qty: '11',
-                food_id: 2,
-              })
-              ]
+              this.arrFoods
+              // [
+              // this.formBuilder.group({
+              //   qty: '15',
+              //   food_id: 1,
+              // }),
+              // this.formBuilder.group({
+              //   qty: '11',
+              //   food_id: 2,
+              // })
+              // ]
             )
           });
         }

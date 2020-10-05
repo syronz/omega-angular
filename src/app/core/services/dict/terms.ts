@@ -80,6 +80,9 @@ export const Terms = {
     food: { en: 'food', ku: 'food', ar: 'food' },
     price: { en: 'price', ku: 'price', ar: 'price' },
     new_order: { en: 'new_order', ku: 'new_order', ar: 'new_order' },
+    customer: { en: 'customer', ku: 'kryar', ar: 'customer' },
+    table: { en: 'table', ku: 'mez', ar: 'table' },
+    discount: { en: 'discount', ku: 'dashkandn', ar: 'discount' },
 
 };
 
