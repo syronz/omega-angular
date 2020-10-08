@@ -41,21 +41,22 @@
       <div class="foods"  formArrayName="foods">
         <div class="foodBtn" *ngFor="let f of orderForm.value.foods; let i = index; trackBy: trackByFn">
           <ng-container [formGroupName]="i">
-            <div matRipple >
+            <div matRipple (click)="addQty(i,1)">
               <p class="center"> {{ f.name }} </p>
               <p class="center"> {{ f.price | number }}</p>
             </div>
             <div class="foodFooter">
-              <button (click)="add(3)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+              <button (click)="addQty(i,-1)" type="button" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
                 <mat-icon>remove</mat-icon>
               </button>
               <mat-form-field>
                 <input 
-                  type="string"
+                  type="number"
+                  (change)="addQty(i,0)"
                   matInput
                   formControlName="qty">
               </mat-form-field>
-              <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+              <button (click)="addQty(i,1)" type="button" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
                 <mat-icon>add</mat-icon>
               </button>
             </div>
@@ -67,12 +68,45 @@
     </div>
 
     <div class="summary">
-      this is foods panel
-      <button type="submit"> submit </button>
-      <pre>
+      <div class="grand-total">
+        <p>
+          {{ 'iraqi_dinar' | dict | titlecase }}
+        </p>
 
-      {{orderForm.value | json }}
-      </pre>
+        <p class="total">
+          {{ grandTotal - orderForm.value.discount | number }}
+        </p>
+
+      </div>
+      <button class="submit" mat-raised-button color="primary" type="submit"> 
+        {{ 'print' | dict | titlecase }} 
+      </button>
+
+      <div class="food-list">
+        <table border="1" cellspacing="0">
+          <tr>
+            <th> {{ 'food' | dict | titlecase }} </th>
+            <th> {{ 'price' | dict | titlecase }} </th>
+            <th> {{ 'qty' | dict | titlecase }} </th>
+            <th> {{ 'total' | dict | titlecase }} </th>
+          </tr>
+          <tr *ngFor="let f of summaryList">
+            <td> {{ f.name }} </td>
+            <td> {{ f.price | number }} </td>
+            <td> {{ f.qty }} </td>
+            <td class="rightAlign"> {{ f.price * f.qty | number }} </td>
+          </tr>
+          <tr>
+            <th colspan="3">
+              {{ 'grand_total' | dict | titlecase }}
+            </th>
+            <th class="rightAlign">
+              {{ grandTotal | number }}
+            </th>
+          </tr>
+        </table>
+
+      </div>
 
     </div>
 

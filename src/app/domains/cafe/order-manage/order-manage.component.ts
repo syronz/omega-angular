@@ -11,6 +11,8 @@ export class OrderManageComponent implements OnInit {
   orderForm: FormGroup;
   foods = [];
   arrFoods = [];
+  summaryList = [];
+  grandTotal = 0;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -35,7 +37,7 @@ export class OrderManageComponent implements OnInit {
           this.arrFoods.push(this.formBuilder.group({
             name: el.name,
             price: el.price,
-            qty: '',
+            qty: 0,
             food_id: el.id,
           }));
 
@@ -73,8 +75,25 @@ export class OrderManageComponent implements OnInit {
 
 
   submit(): void {
-    console.log(this.orderForm);
+    const formData = this.orderForm.value;
+    const data = {
+      discount: formData.discount,
+      customer: formData.customer,
+      table: formData.table,
+      phone: formData.phone,
+      description: formData.description,
+      foods: this.summaryList,
+    };
+
+    this.cafeService.saveOrder(data).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.warn(err);
+      });
   }
+
 
   remove(n): void {
     console.log(n);
@@ -82,6 +101,26 @@ export class OrderManageComponent implements OnInit {
 
   trackByFn(index): any {
     return index;
+  }
+
+  addQty(index, count: number): any {
+    const qtyObj = this.orderForm.controls.foods['controls'][index]['controls'].qty
+    let qty = qtyObj.value + count;
+    qty = qty < 0 ? 0 : qty;
+    qtyObj.setValue(qty);
+
+    this.generateSummaryList();
+  }
+
+  generateSummaryList(): void {
+    console.log(this.orderForm.value.foods);
+
+    this.summaryList = this.orderForm.value.foods.filter(food => food.qty > 0);
+
+    // console.log(array1.map(obj => obj.mark).reduce((a,b) => a+b));
+    this.grandTotal = this.summaryList.map(food => food.qty * food.price).reduce((a, b) => a + b);
+
+    console.log(this.summaryList);
   }
 
 }

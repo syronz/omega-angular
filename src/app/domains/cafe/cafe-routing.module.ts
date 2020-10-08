@@ -16,13 +16,13 @@ const routes: Routes = [
         path: 'foods',
         component: FoodComponent,
       },
-      {
-        path: 'orders/new',
-        component: OrderManageComponent,
-      },
 
     ]
-  }
+  },
+  {
+    path: 'orders/new',
+    component: OrderManageComponent,
+  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

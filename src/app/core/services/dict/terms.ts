@@ -83,6 +83,11 @@ export const Terms = {
     customer: { en: 'customer', ku: 'kryar', ar: 'customer' },
     table: { en: 'table', ku: 'mez', ar: 'table' },
     discount: { en: 'discount', ku: 'dashkandn', ar: 'discount' },
+    iraqi_dinar: { en: 'iraqi dinar', ku: 'iraqi dinar', ar: 'iraqi dinar' },
+    print: { en: 'print', ku: 'chap', ar: 'print' },
+    qty: { en: 'qty', ku: 'zhmara', ar: 'qty' },
+    total: { en: 'total', ku: 'ko', ar: 'total' },
+    grand_total: { en: 'grand total', ku: 'koy gshti', ar: 'grand total' },
 
 };
 
