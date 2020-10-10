@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { CafeService } from '../cafe.service';
+import { SharedService } from '../../../core/shared/shared.service';
+import { environment as env } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-order-manage',
@@ -17,6 +19,7 @@ export class OrderManageComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private cafeService: CafeService,
+    private sharedService: SharedService,
   ) {
     this.orderForm = this.formBuilder.group({
       customer: '',
@@ -49,16 +52,6 @@ export class OrderManageComponent implements OnInit {
             description: '',
             foods: this.formBuilder.array(
               this.arrFoods
-              // [
-              // this.formBuilder.group({
-              //   qty: '15',
-              //   food_id: 1,
-              // }),
-              // this.formBuilder.group({
-              //   qty: '11',
-              //   food_id: 2,
-              // })
-              // ]
             )
           });
         }
@@ -85,13 +78,33 @@ export class OrderManageComponent implements OnInit {
       foods: this.summaryList,
     };
 
-    this.cafeService.saveOrder(data).subscribe(
+    this.sharedService.temporaryToken().subscribe(
       res => {
         console.log(res);
+
+        this.cafeService.saveOrder(data).subscribe(
+          res2 => {
+            this.summaryList = [];
+            this.grandTotal = 0;
+            this.orderForm.controls.discount.setValue(0);
+            this.orderForm.controls.customer.setValue('');
+            this.orderForm.controls.table.setValue('');
+            this.orderForm.controls.phone.setValue('');
+            this.orderForm.controls.description.setValue('');
+            for (let i = 0; i < this.arrFoods.length; i++) {
+              this.setQty(i, 0) ;
+            }
+
+            window.open(`${env.printURL}/orders/${res2.data.id}/print?temporary_token=${res.data}`, '_blank');
+          },
+          err2 => {
+            console.warn(err2);
+          });
       },
       err => {
         console.warn(err);
       });
+
   }
 
 
@@ -112,12 +125,16 @@ export class OrderManageComponent implements OnInit {
     this.generateSummaryList();
   }
 
+  setQty(index, count: number): any {
+    const qtyObj = this.orderForm.controls.foods['controls'][index]['controls'].qty
+    qtyObj.setValue(count);
+  }
+
   generateSummaryList(): void {
     console.log(this.orderForm.value.foods);
 
     this.summaryList = this.orderForm.value.foods.filter(food => food.qty > 0);
 
-    // console.log(array1.map(obj => obj.mark).reduce((a,b) => a+b));
     this.grandTotal = this.summaryList.map(food => food.qty * food.price).reduce((a, b) => a + b);
 
     console.log(this.summaryList);

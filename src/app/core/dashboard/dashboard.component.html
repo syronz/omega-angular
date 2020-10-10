@@ -29,9 +29,6 @@
         <mat-list-item
             [routerLink]="['/base']"
             [routerLinkActive]="['itemSelected']">
-          <!-- <button mat-icon-button > -->
-          <!--   <mat-icon>dashboard</mat-icon> -->
-          <!-- </button> -->
           <a matLine>
             <span>+</span>
             {{ 'dashboard' | dict | titlecase }}
@@ -41,12 +38,18 @@
         <mat-list-item
             [routerLink]="['/base/roles']"
             [routerLinkActive]="['itemSelected']">
-          <!-- <button mat-icon-button > -->
-          <!--   <mat-icon>book_online</mat-icon> -->
-          <!-- </button> -->
           <a matLine> 
             <span> </span>
             {{ 'role' | dict | titlecase }}
+          </a>
+        </mat-list-item>
+
+        <mat-list-item
+            [routerLink]="['/cafe/orders']"
+            [routerLinkActive]="['itemSelected']">
+          <a matLine> 
+            <span> </span>
+            {{ 'orders' | dict | titlecase }}
           </a>
         </mat-list-item>
 
@@ -55,7 +58,7 @@
             [routerLinkActive]="['itemSelected']">
           <a matLine> 
             <span> </span>
-            {{ 'invoices' | dict | titlecase }}
+            {{ 'foods' | dict | titlecase }}
           </a>
         </mat-list-item>
 
@@ -65,6 +68,15 @@
           <a matLine> 
             <span> </span>
             {{ 'new_order' | dict | titlecase }}
+          </a>
+        </mat-list-item>
+
+        <mat-list-item
+            [routerLink]="['/cafe/report/daily-order']"
+            [routerLinkActive]="['itemSelected']">
+          <a matLine> 
+            <span> </span>
+            {{ 'daily_order' | dict | titlecase }}
           </a>
         </mat-list-item>
 

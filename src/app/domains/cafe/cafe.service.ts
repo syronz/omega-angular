@@ -23,4 +23,12 @@ export class CafeService {
   saveOrder(data: any): Observable<any> {
     return this.http.post<any>(env.apiURL + 'orders', data);
   }
+
+  dailyOrder(start: string, end: string): Observable<any> {
+    start += ' 00:00:00';
+    end += ' 23:59:59';
+    const filter = `filter=caf_orders.created_at[gte]'${start}'[and]caf_orders.created_at[lte]'${end}'`;
+
+    return this.http.get<any>(`${env.apiURL}orders?direction=asc&page_size=10000&${filter}`);
+  }
 }

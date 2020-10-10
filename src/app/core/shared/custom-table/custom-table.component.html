@@ -54,7 +54,7 @@
               mat-menu-item 
               *ngFor="let b of c.buttons" 
               (click)="b.fn(r);"> 
-              <mat-icon>delete</mat-icon>
+              <mat-icon>{{ b.icon }}</mat-icon>
               <span>{{ b.name }}</span>
             </button> 
           </mat-menu>

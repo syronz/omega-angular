@@ -24,5 +24,10 @@ export class SharedService {
     return this.http.put<any>(env.apiURL + url, data);
   }
 
+  temporaryToken(): Observable<any> {
+    return this.http.get<any>(`${env.apiURL}/temporary/token`);
+  }
+
+
 
 }

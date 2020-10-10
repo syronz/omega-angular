@@ -6,6 +6,8 @@ import { DashboardComponent } from '../../core/dashboard/dashboard.component';
 import { CafeComponent } from './cafe.component';
 import { FoodComponent } from './food/food.component';
 import { OrderManageComponent } from './order-manage/order-manage.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDailyComponent } from './order-daily/order-daily.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,14 @@ const routes: Routes = [
       {
         path: 'foods',
         component: FoodComponent,
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent,
+      },
+      {
+        path: 'report/daily-order',
+        component: OrderDailyComponent,
       },
 
     ]

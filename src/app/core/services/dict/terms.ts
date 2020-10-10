@@ -88,6 +88,12 @@ export const Terms = {
     qty: { en: 'qty', ku: 'zhmara', ar: 'qty' },
     total: { en: 'total', ku: 'ko', ar: 'total' },
     grand_total: { en: 'grand total', ku: 'koy gshti', ar: 'grand total' },
+    orders: { en: 'orders', ku: 'dawakarekan', ar: 'orders' },
+    foods: { en: 'foods', ku: 'xwardnakan', ar: 'foods' },
+    id: { en: 'id', ku: 'id', ar: 'id' },
+    row: { en: 'row', ku: 'row', ar: 'row' },
+    sub_total: { en: 'Sub Total', ku: 'Sub Total', ar: 'Sub Total' },
+    daily_order: { en: 'Daily Order', ku: 'Daily Order', ar: 'Daily Order' },
 
 };
 
