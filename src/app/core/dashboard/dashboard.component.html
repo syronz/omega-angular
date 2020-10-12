@@ -10,7 +10,7 @@
       </button>
       <mat-menu #profile="matMenu" [overlapTrigger]="false">
         <!-- <button mat-menu-item (click)="logout()"> -->
-        <button mat-menu-item>
+        <button mat-menu-item [routerLink]="['/login']">
           <mat-icon>power_settings_new</mat-icon>
           <span>{{'logout' | dict | titlecase}}</span>
         </button>
@@ -40,7 +40,7 @@
             [routerLinkActive]="['itemSelected']">
           <a matLine> 
             <span> </span>
-            {{ 'role' | dict | titlecase }}
+            {{ 'setting' | dict | titlecase }}
           </a>
         </mat-list-item>
 

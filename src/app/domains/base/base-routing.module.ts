@@ -6,6 +6,8 @@ import { DashboardComponent } from '../../core/dashboard/dashboard.component';
 import { BaseComponent } from './base.component';
 import { AuthComponent } from './auth/auth.component';
 import { RoleComponent } from './role/role.component';
+import { UserComponent } from './user/user.component';
+import { ActivityComponent } from './activity/activity.component';
 
 const routes: Routes = [
   {
@@ -31,15 +33,15 @@ const routes: Routes = [
           },
           {
             path: 'users',
-            component: RoleComponent,
+            component: UserComponent,
+          },
+          {
+            path: 'activities',
+            component: ActivityComponent,
           },
         ]
       }
     ]
-  },
-  {
-    path: 'roles2',
-    component: RoleComponent,
   },
   {
     path: 'login',

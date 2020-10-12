@@ -67,6 +67,8 @@ export const Terms = {
     credit: { en: 'credit', ku: 'لامان', ar: 'credit' },
     debit: { en: 'debit', ku: 'لای', ar: 'debit' },
     balance_sheet: { en: 'balance sheet', ku: 'بەلانس شیت', ar: 'balance sheet' },
+    create_user: { en: 'create_user', ku: 'create_user', ar: 'create_user' },
+    edit_user: { en: 'edit_user', ku: 'edit_user', ar: 'edit_user' },
 
 
     login: { en: 'login', ku: 'daxl boon', ar: 'login' },
@@ -102,6 +104,7 @@ export const Terms = {
     status: { en: 'status', ku: 'status', ar: 'status' },
     monthly_order: { en: 'monthly order', ku: 'monthly order', ar: 'monthly order' },
     color: { en: 'color', ku: 'color', ar: 'color' },
+    setting: { en: 'setting', ku: 'setting', ar: 'setting' },
 
 
 

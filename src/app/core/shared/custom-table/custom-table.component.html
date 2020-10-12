@@ -1,5 +1,5 @@
 <!-- <button mat-button (click)="openDeleteDialog()"> ok </button> -->
-<button mat-button (click)="openAddDialog()">{{ 'add' | dict | titlecase }}</button>
+<button *ngIf="!(customData.create === false)" mat-button (click)="openAddDialog()">{{ 'add' | dict | titlecase }}</button>
 
 <div class="container">
 

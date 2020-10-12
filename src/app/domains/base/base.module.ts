@@ -7,6 +7,7 @@ import { BaseComponent } from './base.component';
 import { AuthComponent } from './auth/auth.component';
 import { RoleComponent } from './role/role.component';
 import { UserComponent } from './user/user.component';
+import { ActivityComponent } from './activity/activity.component';
 
 
 
@@ -15,7 +16,8 @@ import { UserComponent } from './user/user.component';
     BaseComponent,
     AuthComponent,
     RoleComponent,
-    UserComponent
+    UserComponent,
+    ActivityComponent
   ],
   imports: [
     CommonModule,
