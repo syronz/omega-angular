@@ -35,4 +35,16 @@ export class CafeService {
   monthlyOrder(): Observable<any> {
     return this.http.get<any>(`${env.apiURL}reports/orders/monthly-report`);
   }
+
+  foodConsume(start: string, end: string): Observable<any> {
+    start += ' 00:00:00';
+    end += ' 23:59:59';
+    // const filter = `filter=caf_orders.created_at[gte]'${start}'[and]caf_orders.created_at[lte]'${end}'`;
+    const params = {
+      start,
+      end,
+    };
+
+    return this.http.get<any>(`${env.apiURL}reports/food-consume`, {params});
+  }
 }

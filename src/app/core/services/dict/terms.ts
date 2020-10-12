@@ -105,6 +105,7 @@ export const Terms = {
     monthly_order: { en: 'monthly order', ku: 'monthly order', ar: 'monthly order' },
     color: { en: 'color', ku: 'color', ar: 'color' },
     setting: { en: 'setting', ku: 'setting', ar: 'setting' },
+    food_consume: { en: 'invoice consume', ku: 'invoice consume', ar: 'invoice consume' },
 
 
 

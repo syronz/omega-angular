@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="date-selector">
+    <form [formGroup]="dateSelector" (ngSubmit)="goToDate()">  
+      <mat-form-field>
+        <input
+          type="date"
+          matInput
+          placeholder="start"
+          formControlName="start" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="date"
+          matInput
+          placeholder="end"
+          formControlName="end" />
+      </mat-form-field>
+
+
+      <button mat-button type="submit"> Go </button>
+
+    </form>
+  </div>
+  <div class="orders">
+    <table border="1" cellspacing="0">
+      <tr>
+        <th> {{ 'row' | dict | titlecase }} </th>
+        <th> {{ 'food' | dict | titlecase }} </th>
+        <th> {{ 'qty' | dict | titlecase }} </th>
+      </tr>
+
+      <tr *ngFor="let el of foods;let i = index">
+        <td> {{ i + 1 }} </td>
+        <td> {{ el.food }} </td>
+        <td style="text-align:right"> {{ el.qty | number }}&nbsp; </td>
+      </tr>
+
+      <tr>
+        <th colspan="2"> {{ 'total' | dict | titlecase }} </th>
+        <th style="text-align:right"> {{ totalQty | number }} &nbsp;</th>
+      </tr>
+    </table>
+
+  </div>
+</div>

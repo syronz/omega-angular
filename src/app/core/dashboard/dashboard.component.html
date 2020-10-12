@@ -36,15 +36,6 @@
         </mat-list-item>
 
         <mat-list-item
-            [routerLink]="['/base/roles']"
-            [routerLinkActive]="['itemSelected']">
-          <a matLine> 
-            <span> </span>
-            {{ 'setting' | dict | titlecase }}
-          </a>
-        </mat-list-item>
-
-        <mat-list-item
             [routerLink]="['/cafe/orders']"
             [routerLinkActive]="['itemSelected']">
           <a matLine> 
@@ -81,6 +72,15 @@
         </mat-list-item>
 
         <mat-list-item
+            [routerLink]="['/cafe/report/food-consume']"
+            [routerLinkActive]="['itemSelected']">
+          <a matLine> 
+            <span> </span>
+            {{ 'food_consume' | dict | titlecase }}
+          </a>
+        </mat-list-item>
+
+        <mat-list-item
             [routerLink]="['/cafe/report/monthly-order']"
             [routerLinkActive]="['itemSelected']">
           <a matLine> 
@@ -90,13 +90,20 @@
         </mat-list-item>
 
         <mat-list-item
-            [routerLink]="['/login']"
+            [routerLink]="['/base/roles']"
             [routerLinkActive]="['itemSelected']">
-          <!-- <button mat-icon-button > -->
-          <!--   <mat-icon>exit_to_app</mat-icon> -->
-          <!-- </button> -->
-          <a matLine> {{ 'logout' | dict | titlecase }}</a>
+          <a matLine> 
+            <span> </span>
+            {{ 'setting' | dict | titlecase }}
+          </a>
         </mat-list-item>
+
+
+        <!-- <mat-list-item -->
+        <!--     [routerLink]="['/login']" -->
+        <!--     [routerLinkActive]="['itemSelected']"> -->
+        <!--   <a matLine> {{ 'logout' | dict | titlecase }}</a> -->
+        <!-- </mat-list-item> -->
       </mat-nav-list>
 
     </mat-sidenav>

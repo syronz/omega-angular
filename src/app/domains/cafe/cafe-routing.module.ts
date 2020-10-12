@@ -9,6 +9,7 @@ import { OrderManageComponent } from './order-manage/order-manage.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDailyComponent } from './order-daily/order-daily.component';
 import { OrderMonthlyComponent } from './order-monthly/order-monthly.component';
+import { FoodConsumeComponent } from './food-consume/food-consume.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'report/monthly-order',
         component: OrderMonthlyComponent,
+      },
+      {
+        path: 'report/food-consume',
+        component: FoodConsumeComponent,
       },
 
     ]
