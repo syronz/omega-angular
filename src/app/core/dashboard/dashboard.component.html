@@ -3,7 +3,7 @@
       <button mat-icon-button (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <div class="brand-title"><a routerLink="/">Angular</a></div>
+      <div class="brand-title"><a routerLink="/cafe/orders">Omega Cafe</a></div>
       <span class="spacer"></span>
       <button mat-icon-button [matMenuTriggerFor]="profile">
         <mat-icon>apps</mat-icon>
@@ -26,15 +26,6 @@
       [fixedInViewport]="mobileQuery.matches">
 
       <mat-nav-list>
-        <mat-list-item
-            [routerLink]="['/base']"
-            [routerLinkActive]="['itemSelected']">
-          <a matLine>
-            <span>+</span>
-            {{ 'dashboard' | dict | titlecase }}
-          </a>
-        </mat-list-item>
-
         <mat-list-item
             [routerLink]="['/cafe/orders']"
             [routerLinkActive]="['itemSelected']">

@@ -27,7 +27,6 @@ export class AuthService {
   }
 
   checkPerm(resource: string): boolean {
-    console.log(">>>>>>>>>>", this.resources);
     return this.resources.includes(resource);
   }
 

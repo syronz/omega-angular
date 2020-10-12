@@ -64,7 +64,7 @@ export class AuthComponent implements OnInit {
     localStorage.setItem('session', JSON.stringify(res));
     localStorage.setItem('token', res.data.user_extra.token);
     localStorage.setItem('resources', res.data.resources);
-    localStorage.setItem('language', res.data.language);
+    localStorage.setItem('language', res.data.lang);
     this.authServ.setAcl(res.data.resources);
     this.router.navigate(['']);
   }
