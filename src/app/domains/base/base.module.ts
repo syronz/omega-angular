@@ -6,6 +6,7 @@ import { BaseRoutingModule } from './base-routing.module';
 import { BaseComponent } from './base.component';
 import { AuthComponent } from './auth/auth.component';
 import { RoleComponent } from './role/role.component';
+import { UserComponent } from './user/user.component';
 
 
 
@@ -13,7 +14,8 @@ import { RoleComponent } from './role/role.component';
   declarations: [
     BaseComponent,
     AuthComponent,
-    RoleComponent
+    RoleComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,

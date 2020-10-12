@@ -33,17 +33,16 @@ export class CustomDialogComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('>>>>>>> INSIDE THE DIALOG', this.data);
     this.title = this.data.title;
     this.dialogType = this.data.target;
 
-    console.log(this.rawForm);
     this.dialogForm = this.formBuilder.group(this.rawForm);
   }
 
   generateForm(fields: any): any {
     const form = {};
     for (const el of fields) {
+      console.log(">>>>>>>>>>>>$$", el)
       const preValue = el.required === true ?  [el.tmpValue, Validators.required] : [el.tmpValue];
       switch (el.type) {
         case 'action':
@@ -53,6 +52,15 @@ export class CustomDialogComponent implements OnInit {
           break;
         }
         case 'number': {
+          form[el.property] = preValue;
+          break;
+        }
+        case 'select': {
+          el.select_list = [];
+          for (const [a, b] of Object.entries(el.options)) {
+            const obj = { val: a, cap: b };
+            el.select_list.push(obj);
+          }
           form[el.property] = preValue;
           break;
         }

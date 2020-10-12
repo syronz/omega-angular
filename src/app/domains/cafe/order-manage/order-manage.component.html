@@ -1,7 +1,7 @@
 <div class="container"> 
   <form [formGroup]="orderForm" (ngSubmit)="submit()">
     <div class="invoice">
-  <button mat-button [routerLink]="['/base']"> Home </button>
+      <button mat-button type="button" [routerLink]="['/base']"> Home </button>
       <div class="header">
         <mat-form-field>
           <input 
@@ -42,8 +42,8 @@
       <div class="foods"  formArrayName="foods">
         <div class="foodBtn" *ngFor="let f of orderForm.value.foods; let i = index; trackBy: trackByFn">
           <ng-container [formGroupName]="i">
-            <div matRipple (click)="addQty(i,1)">
-              <p class="center"> {{ f.name }} </p>
+            <div class="foodBox {{f.color}}" matRipple (click)="addQty(i,1)">
+              <p class="center">{{ f.name }} </p>
               <p class="center"> {{ f.price | number }}</p>
             </div>
             <div class="foodFooter">

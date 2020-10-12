@@ -110,14 +110,17 @@ export class CustomTableComponent implements OnInit, AfterViewInit {
   }
 
   openAddDialog(): void {
-    console.log('>>>>>>####', this.customData);
 
     const keys = Object.keys(this.customData.fields);
     for (const el of keys) {
       if (this.customData.fields[el].put === true) {
         delete this.customData.fields[el];
       } else {
-        this.customData.fields[el].tmpValue = '';
+        if (this.customData.fields[el].initVal !== undefined) {
+          this.customData.fields[el].tmpValue = this.customData.fields[el].value;
+        } else {
+          this.customData.fields[el].tmpValue = '';
+        }
       }
     }
 

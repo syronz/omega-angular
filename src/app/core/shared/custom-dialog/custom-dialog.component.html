@@ -31,6 +31,17 @@
                 {{ errorList[row.property] }}
               </mat-error>
           </some-element>
+          <some-element *ngSwitchCase="'select'">
+            <mat-label>{{ row.title }}</mat-label>
+            <mat-select [formControlName]='row.property'>
+              <mat-option *ngFor="let el of row.select_list" [value]="el.val"> 
+                {{ el.cap }} 
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              {{ errorList[row.property] }}
+            </mat-error>
+          </some-element>
           <some-element *ngSwitchCase="'action'">
           </some-element>
           <some-element *ngSwitchDefault>

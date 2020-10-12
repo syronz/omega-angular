@@ -77,7 +77,7 @@ export const Terms = {
 
     // Cafe Domain
     cafe: { en: 'cafe', ku: 'cafe', ar: 'cafe' },
-    food: { en: 'food', ku: 'food', ar: 'food' },
+    food: { en: 'invoice', ku: 'invoice', ar: 'invoice' },
     price: { en: 'price', ku: 'price', ar: 'price' },
     new_order: { en: 'new_order', ku: 'new_order', ar: 'new_order' },
     customer: { en: 'customer', ku: 'kryar', ar: 'customer' },
@@ -89,11 +89,21 @@ export const Terms = {
     total: { en: 'total', ku: 'ko', ar: 'total' },
     grand_total: { en: 'grand total', ku: 'koy gshti', ar: 'grand total' },
     orders: { en: 'orders', ku: 'dawakarekan', ar: 'orders' },
-    foods: { en: 'foods', ku: 'xwardnakan', ar: 'foods' },
+    foods: { en: 'invoices', ku: 'invoices', ar: 'invoices' },
     id: { en: 'id', ku: 'id', ar: 'id' },
     row: { en: 'row', ku: 'row', ar: 'row' },
     sub_total: { en: 'Sub Total', ku: 'Sub Total', ar: 'Sub Total' },
     daily_order: { en: 'Daily Order', ku: 'Daily Order', ar: 'Daily Order' },
+    monthly_report: { en: 'monthly report', ku: 'monthly report', ar: 'monthly report' },
+    sold: { en: 'sold', ku: 'sold', ar: 'sold' },
+    month: { en: 'month', ku: 'month', ar: 'month' },
+    net_sold: { en: 'net sold', ku: 'net sold', ar: 'net sold' },
+    create_food: { en: 'create invoice', ku: 'create invoice', ar: 'create invoice' },
+    status: { en: 'status', ku: 'status', ar: 'status' },
+    monthly_order: { en: 'monthly order', ku: 'monthly order', ar: 'monthly order' },
+    color: { en: 'color', ku: 'color', ar: 'color' },
+
+
 
 };
 

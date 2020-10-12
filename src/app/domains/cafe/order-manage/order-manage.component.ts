@@ -39,6 +39,7 @@ export class OrderManageComponent implements OnInit {
         for (const el of this.foods) {
           this.arrFoods.push(this.formBuilder.group({
             name: el.name,
+            color: el.color,
             price: el.price,
             qty: 0,
             food_id: el.id,

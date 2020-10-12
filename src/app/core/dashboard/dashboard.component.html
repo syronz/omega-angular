@@ -81,6 +81,15 @@
         </mat-list-item>
 
         <mat-list-item
+            [routerLink]="['/cafe/report/monthly-order']"
+            [routerLinkActive]="['itemSelected']">
+          <a matLine> 
+            <span> </span>
+            {{ 'monthly_order' | dict | titlecase }}
+          </a>
+        </mat-list-item>
+
+        <mat-list-item
             [routerLink]="['/login']"
             [routerLinkActive]="['itemSelected']">
           <!-- <button mat-icon-button > -->

@@ -5,10 +5,15 @@ export function FieldIterator(obj: any, target: string = ''): any[] {
       if (obj[el][target] !== false) {
         obj[el].property = el;
         if (obj[el].type === undefined) {
-          obj[el].type = 'text';
+            if ('options' in obj[el]) {
+                obj[el].type = 'select';
+            }
+            else {
+                obj[el].type = 'text';
+            }
         }
         if (obj[el].required === undefined) {
-          obj[el].required = false;
+            obj[el].required = false;
         }
         cols.push(obj[el]);
       }

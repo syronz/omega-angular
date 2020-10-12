@@ -8,6 +8,7 @@ import { FoodComponent } from './food/food.component';
 import { OrderManageComponent } from './order-manage/order-manage.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDailyComponent } from './order-daily/order-daily.component';
+import { OrderMonthlyComponent } from './order-monthly/order-monthly.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { OrderDailyComponent } from './order-daily/order-daily.component';
     OrderManageComponent,
     OrdersComponent,
     OrderDailyComponent,
+    OrderMonthlyComponent,
   ],
   imports: [
     CommonModule,

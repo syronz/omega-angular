@@ -8,6 +8,7 @@ import { FoodComponent } from './food/food.component';
 import { OrderManageComponent } from './order-manage/order-manage.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDailyComponent } from './order-daily/order-daily.component';
+import { OrderMonthlyComponent } from './order-monthly/order-monthly.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'report/daily-order',
         component: OrderDailyComponent,
+      },
+      {
+        path: 'report/monthly-order',
+        component: OrderMonthlyComponent,
       },
 
     ]
