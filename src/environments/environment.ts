@@ -8,6 +8,9 @@ export const environment = {
   apiURL: '/api/restapi/v1/',
   snackBarDuration: 8000,
   printURL: 'http://127.0.0.1:7173/api/restapi/v1',
+
+  companyID: 0,
+  nodeID: 0,
 };
 
 /*

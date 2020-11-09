@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseService } from '../base.service';
 import { DictService } from '../../../core/services/dict/dict.service';
+import { environment as env } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-user',
@@ -12,7 +12,6 @@ export class UserComponent implements OnInit {
   customData: any;
 
   constructor(
-    private baseServ: BaseService,
     private dictServ: DictService,
   ) { }
 
@@ -27,7 +26,7 @@ export class UserComponent implements OnInit {
       defaultPageSize: 5,
       defaultOrderBy: 'bas_users.id',
       defaultDirection: 'ASC',
-      url: 'users',
+      url: `companies/${env.companyID}/users`,
       create: true,
       fields: {
         id: {

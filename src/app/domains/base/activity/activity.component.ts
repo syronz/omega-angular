@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DictService } from '../../../core/services/dict/dict.service';
+import { environment as env } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-activity',
@@ -23,7 +24,7 @@ export class ActivityComponent implements OnInit {
       defaultPageSize: 5,
       defaultOrderBy: 'bas_activities.id',
       defaultDirection: 'ASC',
-      url: 'activities',
+      url: `companies/${env.companyID}/activities`,
       create: false,
       fields: {
         id: {

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorTheme } from '../../../core/types/error';
+import { environment as env } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-auth',
@@ -65,6 +66,9 @@ export class AuthComponent implements OnInit {
     localStorage.setItem('token', res.data.user_extra.token);
     localStorage.setItem('resources', res.data.resources);
     localStorage.setItem('language', res.data.lang);
+    localStorage.setItem('company_id', res.data.company_id);
+    env.companyID = res.data.company_id;
+    localStorage.setItem('node_id', res.data.node_id);
     this.authServ.setAcl(res.data.resources);
     this.router.navigate(['']);
   }

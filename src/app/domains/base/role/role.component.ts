@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseService } from '../base.service';
 import { DictService } from '../../../core/services/dict/dict.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../../../core/shared/delete-dialog/delete-dialog.component';
+import { environment as env } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-role',
@@ -14,7 +14,6 @@ export class RoleComponent implements OnInit {
   customData: any;
 
   constructor(
-    private baseServ: BaseService,
     private dictServ: DictService,
     public matDialog: MatDialog,
   ) { }
@@ -30,7 +29,7 @@ export class RoleComponent implements OnInit {
       defaultPageSize: 5,
       defaultOrderBy: 'bas_roles.id',
       defaultDirection: 'ASC',
-      url: 'roles',
+      url: `companies/${env.companyID}/roles`,
       create: true,
       fields: {
         id: {

@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { environment as env } from '../../../environments/environment';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +26,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    env.companyID = parseInt(localStorage.getItem('company_id'), 10);
+    env.nodeID = parseInt(localStorage.getItem('nodeID'), 10);
   }
 
 
