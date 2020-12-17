@@ -1,0 +1,209 @@
+.container {
+  padding-left: 7px;
+
+  form {
+    display: grid;
+    grid-template-columns: auto 300px;
+    grid-gap: 10px;
+
+    .foods {
+      // background: #d9f6ff;
+      display: grid;
+      // grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      overflow: auto;
+      height:100vh;
+      .line-box {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+
+      }
+
+    }
+  }// end of form
+
+  .summary {
+    padding-top: 15px;
+    background: #EEE;
+  }
+}
+
+.mini-button {
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0 10px 0 10px;
+}
+
+.mini-input {
+  width: 50px;
+  font-size: 10px;
+  height: 10px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+  grid-gap: 10px;
+}
+
+.foodBtn {
+  // width: 150px;
+  border: 1px solid #eee;
+  user-select: none;
+
+  .foodBox {
+    cursor: pointer;
+  }
+}
+
+.foodFooter {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+
+  mat-form-field {
+    max-width: 50px;
+    input {
+      text-align: center;
+    }
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.submit {
+  width: 100%;
+}
+
+.grand-total {
+  width: 100%;
+  margin-bottom: 10px;
+  padding-top: 15px;
+  background-color: green;
+  color: white;
+  height: 80px;
+  display: grid;
+  justify-content: center;
+
+  p {
+    text-align: center;
+  }
+
+  .total {
+    font-size: 2.5rem;
+  }
+}
+
+.food-list{
+  
+  table {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+.rightAlign {
+  text-align: right;
+}
+
+.light_coral {
+ background-color: #F08080;
+}
+
+.light_salmon {
+ background-color: #FFA07A;
+}
+
+.orange {
+ background-color: #FFA500;
+}
+
+.gold {
+ background-color: #FFD700;
+}
+
+.pale_golden_rod {
+ background-color: #EEE8AA;
+}
+
+.khaki {
+ background-color: #F0E68C;
+}
+
+.yellow_green {
+ background-color: #9ACD32;
+}
+
+.green_yellow {
+ background-color: #ADFF2F;
+}
+
+.light_green {
+ background-color: #90EE90;
+}
+
+.light_cyan {
+ background-color: #E0FFFF;
+}
+
+.aqua_marine {
+ background-color: #7FFFD4;
+}
+
+.powder_blue {
+ background-color: #B0E0E6;
+}
+
+.sky_blue {
+ background-color: #87CEEB;
+}
+
+.medium_slate_blue {
+ background-color: #7B68EE;
+}
+
+.medium_purple {
+ background-color: #9370DB;
+}
+
+.medium_orchid {
+ background-color: #BA55D3;
+}
+
+.thistle {
+ background-color: #D8BFD8;
+}
+
+.plum {
+ background-color: #DDA0DD;
+}
+
+.light_pink {
+ background-color: #FFB6C1;
+}
+
+.wheat {
+ background-color: #F5DEB3;
+}
+
+.peach_puff {
+ background-color: #FFDAB9;
+}
+
+.lavender {
+ background-color: #E6E6FA;
+}
+
+.gainsboro {
+ background-color: #DCDCDC;
+}
+
+.white {
+ background-color: #FFFFFF;
+}
+

@@ -1,0 +1,107 @@
+<div class="container"> 
+  <form [formGroup]="orderForm" (ngSubmit)="submit()">
+    <div class="invoice">
+      <button mat-button type="button" [routerLink]="['/base']"> {{ 'home' | dict | titlecase }} </button>
+      <div class="header">
+        <!-- <mat-form-field> -->
+        <!--   <input --> 
+        <!--     type="text" --> 
+        <!--     matInput --> 
+        <!--     placeholder="{{'customer' | dict | titlecase }}" -->
+        <!--     formControlName="customer" /> -->
+        <!-- </mat-form-field> -->
+        <!-- <mat-form-field> -->
+        <!--   <input --> 
+        <!--     type="text" --> 
+        <!--     matInput --> 
+        <!--     placeholder="{{'table' | dict | titlecase }}" -->
+        <!--     formControlName="table" /> -->
+        <!-- </mat-form-field> -->
+        <!-- <mat-form-field> -->
+        <!--   <input --> 
+        <!--     type="text" --> 
+        <!--     matInput --> 
+        <!--     placeholder="{{'phone' | dict | titlecase }}" -->
+        <!--     formControlName="phone" /> -->
+        <!-- </mat-form-field> -->
+        <!-- <mat-form-field> -->
+        <!--   <input --> 
+        <!--     type="number" --> 
+        <!--     matInput --> 
+        <!--     placeholder="{{'discount' | dict | titlecase }}" -->
+        <!--     formControlName="discount" /> -->
+        <!-- </mat-form-field> -->
+        <!-- <mat-form-field> -->
+        <!--   <input --> 
+        <!--     type="text" --> 
+        <!--     matInput --> 
+        <!--     placeholder="{{'description' | dict | titlecase }}" -->
+        <!--     formControlName="description" /> -->
+        <!-- </mat-form-field> -->
+      </div>
+      <div class="foods"  formArrayName="foods">
+        <div class="foodBtn" *ngFor="let f of orderForm.value.foods; let i = index; trackBy: trackByFn">
+          <ng-container [formGroupName]="i">
+            <div class="line-box">
+            <div class="foodBox {{f.color}}" matRipple (click)="addQty(i,1)">
+              <p class="center">{{ f.name }}: {{ f.price | number }}</p>
+            </div>
+            <div class="foodFooter">
+              <span (click)="addQty(i,-1)" class="mini-button"> - </span>
+              <input class="mini-input" type="number" formControlName="qty">
+              <span (click)="addQty(i,1)" class="mini-button"> + </span>
+            </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="summary">
+      <div class="grand-total">
+        <p>
+          {{ 'iraqi_dinar' | dict | titlecase }}
+        </p>
+
+        <p class="total">
+          {{ grandTotal - orderForm.value.discount | number }}
+        </p>
+
+      </div>
+      <button class="submit" mat-raised-button color="primary" type="submit"> 
+        {{ 'print' | dict | titlecase }} 
+      </button>
+
+      <div class="food-list">
+        <table border="1" cellspacing="0">
+          <tr>
+            <th> {{ 'food' | dict | titlecase }} </th>
+            <th> {{ 'price' | dict | titlecase }} </th>
+            <th> {{ 'qty' | dict | titlecase }} </th>
+            <th> {{ 'total' | dict | titlecase }} </th>
+          </tr>
+          <tr *ngFor="let f of summaryList">
+            <td> {{ f.name }} </td>
+            <td> {{ f.price | number }} </td>
+            <td> {{ f.qty }} </td>
+            <td class="rightAlign"> {{ f.price * f.qty | number }} </td>
+          </tr>
+          <tr>
+            <th colspan="3">
+              {{ 'grand_total' | dict | titlecase }}
+            </th>
+            <th class="rightAlign">
+              {{ grandTotal | number }}
+            </th>
+          </tr>
+        </table>
+
+      </div>
+
+    </div>
+
+  </form>
+</div>
+

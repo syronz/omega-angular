@@ -10,6 +10,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrderDailyComponent } from './order-daily/order-daily.component';
 import { OrderMonthlyComponent } from './order-monthly/order-monthly.component';
 import { FoodConsumeComponent } from './food-consume/food-consume.component';
+import { OrderManage2Component } from './order-manage2/order-manage2.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { FoodConsumeComponent } from './food-consume/food-consume.component';
     OrderDailyComponent,
     OrderMonthlyComponent,
     FoodConsumeComponent,
+    OrderManage2Component,
   ],
   imports: [
     CommonModule,
